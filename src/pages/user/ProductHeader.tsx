@@ -4,12 +4,19 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { FaCartPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { CiMenuBurger } from "react-icons/ci";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductHeader = () => {
+  // const buyerID = useSelector((state:any)=>state?.myBuyer)
+  const cart = useSelector((state:any)=>state.cart) 
+  const dispatch =useDispatch();
+  // console.log(buyerID)
   return (
     <div className="w-[100%] h-[90px] bg-[#456104] flex justify-center ">
       <div className="w-[90%] small:w-[100%] mobile:w-[100%] flex justify-between items-center ">
-        <h1 className="text-4xl small:hidden mobile:hidden  text-[white] small:text-[px] mobile:-[0px] ">BmMarket</h1>
+       <Link to="/">
+       <h3 className="text-4xl small:hidden mobile:hidden  text-[white] small:text-[px] mobile:-[0px] ">BoundaryMarket</h3>
+       </Link>
         <div className="small:flex mobile:flex justify-center hidden items-center gap-[5px] ">
           <CiMenuBurger
           fontSize={20}
@@ -45,10 +52,14 @@ const ProductHeader = () => {
             <VscAccount className="cursor-pointer"
             fontSize={20}
             />
+              <Link to={`/buyer`}>
               <p className="hover:cursor-pointer hover:text-[#fd8605] font-bold text-[14px] ">Account</p>
-              <MdOutlineKeyboardArrowDown className="hover:cursor-pointer"
+              </Link>
+            <Link to={`/buyer`}>
+            <MdOutlineKeyboardArrowDown className="hover:cursor-pointer"
               fontSize={20}
               />
+            </Link>
             </div>
         {/*end firstCom */}
         {/* secondCom */}
@@ -61,7 +72,11 @@ const ProductHeader = () => {
           />
             <div className="absolute hover:cursor-pointer text-white p-1 rounded-[50%] h-[15px] flex justify-center  items-center bg-[#fd8605] text-[10px] font-bold top-[0] animate-bounce right-0 ">0</div>
           </div>
-          <div className="text-[white] font-bold hover:cursor-pointer hover:text-[#fd8605] ">Cart</div>
+          <div className="text-[white] font-bold hover:cursor-pointer hover:text-[#fd8605] "
+          // onClick={()=>{
+          //   dispatch(add)
+          // }}
+          >Cart</div>
         </div>
        </Link>
         {/* secondCom */}

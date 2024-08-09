@@ -224,11 +224,11 @@ const FourthCard = () => {
         <Slider {...settings}>
        <div className="h-[300px] overflow-hidden p-[10px] rounded bg-[#504f4f] w-[250px] small:text-[15px] ml-[20px] mr-[20px] small:w-[250px] ">
               <div className="flex justify-center gap-2 ">
-                <div className="text-[#18fb18a9] font-semibold text-[20px] ">Recent</div>
+                <div className="text-[#456104] font-semibold text-[20px] ">Recent</div>
                 <div className="text-[white] font-semibold text-[20px] ">Project</div>
               </div>
               <div className="w-[100%] text-[13px] font-medium text-[white] mt-[20px] text-center ">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione ea ullam ab. Doloribus maxime ad dolore accusamus illum eos eligendi porro corporis omnis reprehenderit, ea sint officiis beatae minima magni. Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis impedit velit. </div>
-                <div className="p-2 text-[14px] h-[40px] rounded hover:scale-[1.05] text-white transition-all duration-700 bg-[#18fb18a9] hover:cursor-pointer text-center mt-[30px] font-medium ">
+                <div className="p-2 text-[14px] h-[40px] rounded hover:scale-[1.05] text-white transition-all duration-700 bg-[#456104#18fb18a9] hover:cursor-pointer text-center mt-[30px] font-medium ">
                     <button>Lorem.</button>
                 </div>
             </div>
@@ -241,7 +241,7 @@ const FourthCard = () => {
                  src={props?.image} alt="pinimg" />
                   <div className=" text-[15px] text-[#504f4f] font-semibold mt-[15px] ">{props?.tittle}</div>
             <div className="font-[meium] w-[100%] mt-[20px] text-[#5d5c5c] text-[13px] ">{props?.text}</div>
-            <div className="p-2 text-[14px] h-[40px] rounded hover:scale-[1.05] text-white transition-all duration-700 bg-[#18fb18a9] text-center mt-[20px] font-medium hover:cursor-pointer ">
+            <div className="p-2 text-[14px] h-[40px] rounded hover:scale-[1.05] text-white transition-all duration-700 bg-[#456104] text-center mt-[20px] font-medium hover:cursor-pointer ">
                     <button>{props?.butt}</button>
                 </div>
             </div>

@@ -1,80 +1,115 @@
 import { AiFillDelete, AiOutlineRight } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToCart,
+  emptyCart,
+  removeFromCart,
+  removeQTYfromCart,
+} from "../../components/global/redux";
+import { updateStockProduct } from "../../api/Product"
 
 const CheckoutScreen = () => {
+  let dispatch = useDispatch();
+  let cart = useSelector((state: any) => state.cart);
 
-
+  console.log(cart);
   return (
     <div className="mt-10">
       <div className="w-full flex justify-center mb-8 ">
         <div className="w-[95%] border rounded-md p-3">
           <div className="my-5">Shopping Cart</div>
 
-          <div>
+          <hr />
 
-              <div className="flex items-center overflow-hidden ">
+          <div>
+          {
+            cart?.map((props:any)=>(
+
+                <div className="flex items-center">
                 <img
-                src="https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg"
-                alt="img"
-                  className="w-[150px] h-[150px] hover:cursor-pointer hover:scale-[1.1] duration-700  transition-all object-cover mr-6"
-                 
+                  className="w-[150px] h-[150px] object-cover mr-6"
+                  src={props.image}
+                  alt="dummy"
                 />
 
-                <div className="w-[300px] font-semibold text-[15px] mall:mr-[20px] small:text-[12px] ">
-                  <div className="small:text-[12px]">Laptop</div>
-                  <div className="small:text-[12px] s">₦80,0000</div>
+                <div className="w-[300px]">
+                  <div>{props.title}</div>
+                  <div>₦{props.cost}</div>
                 </div>
-                {/* <div className="mr-1 text-[13px] font-semibold  ">
-                  Stock: 80,000
-                </div> */}
-                <div className=" mr-12 flex text-[15px] font-semibold small:text-[13px]  items-center border ">
-                  <div className="mx-4">80,000</div>
+                <div className="mr-1">
+                  Stock: {props.QTYinStock - props.QTY}
+                </div>
+                <div className=" mr-12 flex items-center border ">
+                  <div className="mx-4">{props.QTY}</div>
                   <div>
-                  
+                    {props.QTYinStock - props.QTY > 0 ? (
                       <div
                         className="border-r-0 border-l-2 border-b-0 p-2 border rotate-[-90deg]"
-                     
+                        onClick={() => {
+                          dispatch(addToCart(props));
+                        }}
                       >
                         <AiOutlineRight />
                       </div>
-                  
+                    ) : (
                       <div
                         className="border-r-0 border-l-2 border-b-0 p-2 border rotate-[-90deg] text-gray-300 "
+                        onClick={() => {}}
                       >
                         <AiOutlineRight />
                       </div>
-                 
+                   )}
                     <div
                       className="border-r-0 border-l-2 p-2 rotate-90 border border-t-0 "
+                      onClick={() => {
+                        dispatch(removeQTYfromCart(props));
+                      }}
                     >
                       <AiOutlineRight />
                     </div>
                   </div>
                 </div>
 
-                <div className="w-[100px]  mr-8 text-[13px]   font-bold ">
-                  ₦80,000
+                <div className="w-[100px] mr-8 font-bold ">
+                  ₦
+                  {props.cost * props.QTY}
                 </div>
                 <div
-                  className="hover:cursor-pointer text-[#fd8605] " >
+                  className="hover:cursor-pointer"
+                  onClick={() => {
+                    dispatch(removeFromCart(props));
+                  }}
+                >
                   <AiFillDelete size={30} />
                 </div>
               </div>
-          
+            ))} 
+           
+            
           </div>
         </div>
       </div>
-      <div className="w-full flex justify-center  mb-8 overflow-hidden ">
-        <div className="w-[95%] border rounded-md p-3  flex justify-center flex-col items-center ">
-          <div className="flex justify-between gap-2 items-center text-[13px] font-semibold ">
-            <div>1 Items</div>
+      <div className="w-full flex justify-center mb-8 ">
+        <div className="w-[95%] border rounded-md p-3 ">
+          <div className="flex justify-between items-center">
             <div>
-              ₦ 80,000
-             
+              {cart.length} 
+              Items</div>
+            <div>
+              ₦ 500
+              {/* {cart.reduce((a: any, b: any) => a.cost * a.QTY + b.cost * b.QTY)} */}
             </div>
           </div>
 
           <button
-            className="bg-[#456104] text-white w-[50%] mt-4 h-12 rounded-md  transition-all duration-700 hover:scale-[1.05] ">
+            className="bg-black text-white w-full mt-4 h-12 rounded-md duration-300 transition-all hover:scale-[1.004] "
+            onClick={() => {
+              for (let i of cart) {
+                updateStockProduct(i._id, i.QTY);
+                dispatch(emptyCart());
+              }
+            }}
+          >
             Process
           </button>
         </div>

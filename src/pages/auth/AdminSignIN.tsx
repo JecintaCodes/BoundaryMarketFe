@@ -28,22 +28,33 @@ const AdminSignIN = () => {
     password: yup.string().required(),
   });
 
-  const { register, handleSubmit, reset } = useForm({
+  const { register, handleSubmit, } = useForm({
     resolver: yupResolver(schema),
   });
 
+  
   const onhandleSubmit = handleSubmit(async (data: any) => {
     setLoading(true);
     const { email, password } = data;
-    // console.log("handle submit",{email,password})
+    console.log("handle submit", { email, password });
     signINAdmin({ email, password }).then((res: any) => {
       dispatch(loginAdmin(res));
-      reset();
+      // reset();
       navigate("/admin");
-      return res;
     });
-    setLoading(false);
+    setLoading(false)
   });
+
+  // const onhandleSubmit = handleSubmit(async (data: any) => {
+  //   setLoading(true);
+  //   const { email, password } = data;
+  //   signINAdmin({ email, password }).then((res: any) => {  
+  //     dispatch(loginAdmin(res));
+  //     navigate("/admin");
+  //     // return res;
+  //   });
+  //   setLoading(false);
+  // });
 
   // console.log(loading)
 

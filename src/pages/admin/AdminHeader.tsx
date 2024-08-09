@@ -1,6 +1,8 @@
 import {AiOutlineBell,AiOutlineArrowDown, AiOutlineMenu} from "react-icons/ai"
+import { oneAdminHooks } from "../../hook/AdminHook"
 
 const AdminHeader = () => {
+  const {data} = oneAdminHooks();
   return (
     <div className="w-[100%] h-[70px] flex justify-center  ">
         <div className="w-[90%] flex justify-between items-center ">
@@ -33,7 +35,7 @@ const AdminHeader = () => {
                     <img className="w-[100%] h-[100%] rounded-[50%]  hover:cursor-pointer hover:scale-[1.05] transition-all duration-700  "
                      src="https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg" alt="ping" />
                 </div>
-                <div className="text-[12px] font-bold hover:cursor-pointer text-[#456104] ">Onyemaobi Jecinta</div>
+                <div className="text-[12px] font-bold hover:cursor-pointer text-[#456104] ">{data?.name}</div>
              </div>
              <div>
                 <AiOutlineArrowDown

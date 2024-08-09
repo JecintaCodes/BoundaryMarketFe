@@ -10,7 +10,7 @@ const FifthCard = () => {
             className="w-[100%] h-[100%] object-cover "
             src="https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg" alt="pinimg" />
            <Link to="/sign-up">
-           <div className="flex justify-center items-center mt-[-190px] w-[100px] mobile:ml-[160px] small:ml-[-150px] text-[18px] font-bold gap-1 bg-orange-400 h-[50px] text-white rounded p-1 hover:scale-[1.05] duration-700 cursor-pointer ml-[470px] small:text-[13px] ">
+           <div className="flex justify-center items-center mt-[-190px] w-[100px] mobile:ml-[160px] small:ml-[-150px] text-[18px] font-bold gap-1 bg-orange-[#fa9608] h-[50px] text-white rounded p-1 hover:scale-[1.05] duration-700 cursor-pointer ml-[470px] small:text-[13px] ">
               <button type="button">Register</button>
               <AiOutlineAccountBook />
             </div>

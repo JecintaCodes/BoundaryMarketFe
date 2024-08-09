@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const URL:string = "http://localhost:2003/api/v1"
-const URL: string = "https://boundarymarket.onrender.com/api/v1";
+const URL:string = "http://localhost:2003/api/v1"
+// const URL: string = "https://boundarymarket.onrender.com/api/v1";
 
 export const createUser = async (data: any, adminID: any) => {
   try {

@@ -1,8 +1,8 @@
 import axios from "axios";
 
 
-// const URL:string = "http://localhost:2003/api/v1"
-const URL:string = "https://boundarymarket.onrender.com/api/v1"
+// const URL:string = "https://boundarymarket.onrender.com/api/v1"
+const URL:string = "http://localhost:2003/api/v1"
 
 
 export const createBuyer = async(data:any)=>{
@@ -38,7 +38,7 @@ export const getAllBuyers = async()=>{
 
 export const getOneBuyer = async(buyerID:any)=>{
     try {
-        return await axios.get(`${URL}/:buyerID/get-one-buyer`,buyerID).then((res:any)=>{
+        return await axios.get(`${URL}/${buyerID}/get-one-buyer`,buyerID).then((res:any)=>{
             return res.data.data
         })
     } catch (error) {

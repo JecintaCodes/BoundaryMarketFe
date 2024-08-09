@@ -5,13 +5,14 @@ import { useForm } from "react-hook-form";
 import { signInBuyer } from "../../api/BuyerApi";
 import { useState } from "react";
 import { loginBuyer } from "../../components/global/redux";
-import {BounceLoader} from "react-spinners"
+import {BeatLoader} from "react-spinners"
+import { useDispatch } from "react-redux";
 
 const SignIn = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const navigate = useNavigate();
-
+  const dispatch = useDispatch()
   const schema = yup.object({
     email: yup.string().required(),
     password: yup.string().required(),
@@ -26,13 +27,13 @@ const SignIn = () => {
     const { email, password } = data;
     console.log("handle submit", { email, password });
     signInBuyer({ email, password }).then((res: any) => {
-      loginBuyer(res);
+      dispatch(loginBuyer(res));
       reset();
       navigate("/store");
     });
     setLoading(false)
   });
-  console.log(loading);
+  // console.log(loading);
 
   return (
     <form
@@ -75,14 +76,16 @@ const SignIn = () => {
             backdropFilter: "blur( 4px )",
             WebkitBackdropFilter: " blur( 4px )",
           }}
+          // onClick={}
         >
          {
             loading ? (
                 <>
-                <BounceLoader/>
+                <BeatLoader/>
                 </>
             ):(
                 "Sign In"
+                
             )
          }
         </button>
