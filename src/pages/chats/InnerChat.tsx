@@ -43,8 +43,8 @@ const InnerChat = () => {
 
   return (
     <div>
-      <div className="w-full h-[100vh] flex justify-center items-center">
-        <div className="w-[370px] bg-slate-300">
+      <div className="w-full h-[100vh] flex justify-center items-center mt-[30px]">
+        <div className="w-[370px] overflow-y-scroll   bg-slate-300">
          {/* firstcomponent */}
           <div className="w-[100%] h-[70px] bg-green-950 text-white flex items-center px-2 justify-between">
          <div className="flex  justify-between items-center">

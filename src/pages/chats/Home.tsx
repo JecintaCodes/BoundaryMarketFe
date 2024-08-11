@@ -1,23 +1,23 @@
-import { useState } from "react";
-import pix from "../../src/assets/man.png";
-import Notify from "../Notify";
-import { allUserHooks, userHooks } from "../hooks/userHooks";
+// import { useState } from "react";
+// import pix from "../../src/assets/man.png";
+import Notify from "../../pages/user/UserNotificationPage";
+import { allBuyerHooks, oneBuyerHooks,  } from "../../hook/BuyerHook";
 import DoorDashFavorite from "./LoaderScreen";
-import { addFriend, unFriend } from "../api/friendAPI";
+import { addFriend, unFriend } from "../../api/friendAPI";
 
-const Component = () => {
-  const [state] = useState<number>(1);
+// const Component = () => {
+//   // const [state] = useState<number>(1);
 
-  const randColor = () => {
-    return "#" + Math.floor(Math.random() * 16777215).toString(16);
-  };
+//   // const randColor = () => {
+//   //   return "#" + Math.floor(Math.random() * 16777215).toString(16);
+//   // };
 
-  return <div></div>;
-};
+//   return <div></div>;
+// };
 
 const Home = () => {
-  const { data } = userHooks();
-  const { allUser, isLoading } = allUserHooks();
+  const { data } = oneBuyerHooks();
+  const { allBuyer, isLoading } = allBuyerHooks();
 
   console.log(data);
   return (
@@ -39,7 +39,7 @@ const Home = () => {
           className="grid sm:grid-cols-2 md:grid-cols-2
       lg:grid-cols-3 xl:grid-cols-4 gap-6 "
         >
-          {allUser?.map((props: any, i: number) => (
+          {allBuyer?.map((props: any, i: number) => (
             <div>
               {props._id !== data._id && (
                 <div
@@ -59,7 +59,8 @@ const Home = () => {
                       </div>
 
                       <img
-                        src={pix}
+                        src=""
+                        alt="img"
                         className="w-full h-[300px] object-cover rounded-[15px]"
                       />
                       <div className="absolute top-[50%] left-1 bg[rgba(225, 225, 225, 0.8)]  bg-white p-3 rounded-[50%] rotate">

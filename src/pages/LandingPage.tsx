@@ -32,13 +32,13 @@ const LandingPage = () => {
  <div className="w-[100%] mt-[10px] flex justify-center  ">
    <SecondCard/>
        </div> 
-       <div className="w-[100%] mt-[40px] flex justify-center  ">
+       {/* <div className="w-[100%] mt-[40px] flex justify-center  ">
    <FourthCard/>
-      </div> 
-      <div className="w-[100%] mt-[50px]   ">
+      </div>  */}
+      <div className="w-[100%] mt-[50px]    ">
    <SixthCard/>
       </div> 
-      <div className="w-[100%] mt-[40px]  ">
+      <div className="w-[100%] mt-[40px] ">
    <SeventhCard/>
       </div> 
        <div className="w-[100%] mt-[50px]  ">

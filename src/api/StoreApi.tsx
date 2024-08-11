@@ -1,15 +1,15 @@
 import axios from "axios";
 
-const URL:string = "http://localhost:2003/api/v1"
-// const URL: string = "https://boundarymarket.onrender.com/api/v1";
+// const URL:string = "http://localhost:2003/api/v1"
+const URL: string = "https://boundarymarket.onrender.com/api/v1";
 
 export const createStore = async (data: any, userID: any) => {
   try {
     const config: any = {
-        "content-type": "multipart/form-data",
-      };
+      "content-type": "multipart/form-data",
+    };
     return await axios
-      .post(`${URL}/${userID}/create-store`, { data, userID },config)
+      .post(`${URL}/${userID}/create-store`, { data, userID }, config)
       .then((res: any) => {
         return res.data.data;
       });
@@ -67,28 +67,28 @@ export const getOneStore = async (storeID: any) => {
     console.log(error);
   }
 };
-export const adminDeleteStore = async (adminID:any,storeID: any) => {
-  try {
-    return await axios
-      .get(`${URL}/:adminID/:storeID/admin-delete-store`,{adminID, storeID})
-      .then((res: any) => {
-        return res.data.data;
-      });
-  } catch (error) {
-    console.log(error);
-  }
-};
-export const userDeleteStore = async (userID:any,storeID: any) => {
-  try {
-    return await axios
-      .get(`${URL}/:userID/:storeID/user-delete-store`,{userID, storeID})
-      .then((res: any) => {
-        return res.data.data;
-      });
-  } catch (error) {
-    console.log(error);
-  }
-};
+// export const adminDeleteStore = async (adminID:any,storeID: any) => {
+//   try {
+//     return await axios
+//       .get(`${URL}/:adminID/:storeID/admin-delete-store`,{adminID, storeID})
+//       .then((res: any) => {
+//         return res.data.data;
+//       });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+// export const userDeleteStore = async (userID:any,storeID: any) => {
+//   try {
+//     return await axios
+//       .get(`${URL}/:userID/:storeID/user-delete-store`,{userID, storeID})
+//       .then((res: any) => {
+//         return res.data.data;
+//       });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 export const getOneStoreProducts = async (storeID: any) => {
   try {
     return await axios

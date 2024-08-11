@@ -41,7 +41,7 @@ const AddProduct = () => {
 
         <label
               htmlFor="pix"
-              className="flex items-center h-[50px] justify-center text-white bg-purple-900 hover:cursor-pointer duration-300 transition-all hover:scale-[1.02] rounded-sm mb-4 "
+              className="flex items-center h-[50px] justify-center text-white bg-[#456104] hover:cursor-pointer duration-300 transition-all hover:scale-[1.02] rounded-sm mb-4 "
               onClick={() => {
                 // setToggle(false);
               }}

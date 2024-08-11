@@ -6,16 +6,13 @@ const UserLayout = () => {
   return (
     <div className="w-[100%]  relative "> 
     <UserHeader/>
-      <div className="flex gap-[30px] justify-between ">
-          <div className="w-[200px] fixed left-0 z-50 ">
+      <div className="flex  justify-between ">
+          <div className="w-[17%] fixed left-0 z-50 ">
           <UserSlider
           />
           </div>
-          <div className="absolute right-[300px] w-[500px]  ">
+          <div className="absolute right-[0] w-[80%] mobile:w-[84%] mobilel:w-[84%] small:w-[84%]  ">
           <Outlet/>
-          </div>
-          <div className="w-[230px] fixed right-0 ">
-          <UserProfileScreen/>
           </div>
       </div>
   </div>

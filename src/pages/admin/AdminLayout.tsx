@@ -11,7 +11,7 @@ const AdminLayout = () => {
             <AdminSlider
             />
             </div>
-            <div className="absolute right-0 w-[80%]  ">
+            <div className="absolute right-0 w-[80%] mobile:w-[84%] mobilel:w-[84%] small:w-[84%]   ">
             <Outlet/>
             </div>
             

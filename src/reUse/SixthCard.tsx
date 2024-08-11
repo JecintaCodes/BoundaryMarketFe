@@ -1,7 +1,7 @@
 const SixthCard = () => {
   return (
     <div>
-      <div className="w-[100%] mt-[100px] mobile:w-[100%] small:w-[100%] small:h-[400px] mobile:h-[400px] h-[700px] p-[50px] small:p-[20px] mobile:p-[20px] bg-[#456104] ">
+       <div className="w-[100%] mt-[100px] mobile:w-[100%] small:w-[100%] small:h-[400px] mobile:h-[400px] h-[700px] p-[50px] small:p-[20px] mobile:p-[20px] bg-[#456104] ">
         <div className="text-center font-semibold text-[white] text-[18px] small:text-center mobile:text-center mobile:text-[14px] small:text-[14px]  ">
           Featured Services
         </div>
@@ -85,7 +85,7 @@ const SixthCard = () => {
           </div>
         </div>
         {/*end box */}
-      </div>
+      </div> 
     </div>
   );
 };

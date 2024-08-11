@@ -80,7 +80,7 @@ const Chat = () => {
   return (
     <div>
       <div className="w-full h-[100vh] flex justify-center items-center bg-slate-900">
-        <div className="w-[370px] h-[600px] bg-white rounded-[20px] overflow-hidden">
+        <div className="w-[370px]  h-[600px] bg-white rounded-[20px] overflow-hidden">
            {/* first component */}
            <div className="w-full h-[100px] bg-[#456104] p-3 text-white font-bold">
                 <div className="flex justify-between items-center">

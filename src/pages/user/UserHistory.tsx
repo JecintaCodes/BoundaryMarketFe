@@ -1,6 +1,8 @@
 import {AiOutlineClockCircle} from "react-icons/ai"
 
+
 const UserHistory = () => {
+   
   return (
     <div className=" w-[100%] h-[100%] flex justify-center bg-[#f1eeee] ">
     <div className="w-[90%] small:w-[100%] mobile:w-[100%] h-[100%] mt-[30px] ">
@@ -16,7 +18,7 @@ const UserHistory = () => {
     
     <div className=" mt-[50px] w-[100%] h-[100%] p-[20px]  bg-[white]  rounded-[10px] ">
     
-    <div className=" w-[100%] h-[50px] mt-[25px] mobile:h-[200px] small:h-[200px] p-[5px]  flex items-center bg-red-600 ">
+    <div className=" w-[100%] h-[50px] mt-[25px] mobile:h-[200px] small:h-[200px] p-[5px]  flex items-center  ">
         {/* date */}
         <div className="w-[20%] text-[14px] font-semibold ">12 Jan 2024</div>
         {/*end date */}

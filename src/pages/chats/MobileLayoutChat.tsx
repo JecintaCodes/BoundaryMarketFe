@@ -3,7 +3,7 @@ import Sider from "./Sider"
 
 const MobileLayoutChat = () => {
   return (
-    <div className="flex">
+    <div className="hidden mobilel:flex mobile:flex small:flex mt-[30px]  ">
         <div>
         <Sider/>
         </div>
