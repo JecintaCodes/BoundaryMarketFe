@@ -59,7 +59,7 @@ export const getAllAdmin = async () => {
 export const getOneAdmin = async (adminID: any) => {
   try {
     return await axios
-      .get(`${URL}/${adminID}/get-one-admin`, adminID)
+      .get(`${URL}/${adminID}/get-one-admin`)
       .then((res: any) => {
         return res.data.data;
       });
@@ -72,21 +72,21 @@ export const updateAdminImage = async (adminID: any) => {
     "content-type": "multipart/form-data",
   };
   return axios
-    .patch(`${URL}/:adminID/admin-update-avatar`, adminID, config)
+    .patch(`${URL}/${adminID}/admin-update-avatar`, config)
     .then((res) => {
       return res.data.data;
     });
 };
 export const updateAdminName = async (adminID: any, data: any) => {
   return axios
-    .patch(`${URL}/:adminID/update-admin-name`, { adminID, data })
+    .patch(`${URL}/${adminID}/update-admin-name`, data)
     .then((res: any) => {
       return res.data.data;
     });
 };
 export const updateAdminDetail = async (adminID: any, data: any) => {
   return axios
-    .patch(`${URL}/${adminID}/update-admin-detail`, { adminID, data })
+    .patch(`${URL}/${adminID}/update-admin-detail`, data)
     .then((res) => {
       return res.data.data;
     });
@@ -95,9 +95,5 @@ export const updateAdminInfo = async (adminID: any, data: any) => {
   const config: any = {
     "content-type": "multipart/form-data",
   };
-  return axios.patch(
-    `${URL}/${adminID}/update-admin-info`,
-    { adminID, data },
-    config
-  );
+  return axios.patch(`${URL}/${adminID}/update-admin-info`, data, config);
 };

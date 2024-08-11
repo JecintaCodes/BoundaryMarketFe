@@ -1,6 +1,7 @@
 import axios from "axios";
 
-let URL: string = "http://localhost:2003/api/v1";
+// let URL: string = "http://localhost:2003/api/v1";
+let URL: string = "https://boundarymarket.onrender.com/api/v1";
 
 export const createProduct = async (data: any) => {
   const config: any = {
