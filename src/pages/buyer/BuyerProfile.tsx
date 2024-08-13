@@ -22,7 +22,7 @@ const BuyerProfile = () => {
     const formData = new FormData();
     formData.append("image", image);
     formData.append("name", name);
-    formData.append("descriptions", desc);
+    formData.append("details", desc);
     await updateBuyer(data?._id, formData).then((res) => {
       dispatch(loginBuyer(res));
     });
@@ -45,13 +45,13 @@ const BuyerProfile = () => {
                 setName(e.target.value)
               }
             />
-            <center className="text-[17px] small:text-[13px] font-semibold small:font-bold mobile:text-[14px] ">
+            {/* <center className="text-[17px] small:text-[13px] font-semibold small:font-bold mobile:text-[14px] ">
               Update Profile Description
-            </center>
+            </center> */}
 
             <input
-              className="w-[100%] text-[12px] h-[40px] p-2 bg-[#e0dede] outline-none mt-[20px]  "
-              placeholder=" name"
+              className="w-[100%] text-[12px] h-[50px] p-2 bg-[#e0dede] outline-none mt-[20px]  "
+              placeholder="tell us about your self"
               type="text"
               value={desc}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

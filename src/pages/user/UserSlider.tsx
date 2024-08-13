@@ -37,7 +37,7 @@ const UserSlider = () => {
               </div>
             </Link>
 
-            <Link to="user/store">
+            <Link to="/user/store">
               <div className="w-[100%] h-[50px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#18fb18a9] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] relative mt-[20px] ">
                 <AiOutlineProfile />
                 <div>myStore</div>

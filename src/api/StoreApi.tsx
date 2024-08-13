@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// const URL:string = "http://localhost:2003/api/v1"
+// const URL: string = "http://localhost:2003/api/v1";
 const URL: string = "https://boundarymarket.onrender.com/api/v1";
 
 export const createStore = async (data: any, userID: any) => {
@@ -9,7 +9,7 @@ export const createStore = async (data: any, userID: any) => {
       "content-type": "multipart/form-data",
     };
     return await axios
-      .post(`${URL}/${userID}/create-store`, { data, userID }, config)
+      .post(`${URL}/${userID}/create-store`, data, config)
       .then((res: any) => {
         return res.data.data;
       });
@@ -59,7 +59,7 @@ export const searchName = async () => {
 export const getOneStore = async (storeID: any) => {
   try {
     return await axios
-      .get(`${URL}/:storeID/get-one-store`, storeID)
+      .get(`${URL}/${storeID}/get-one-store`)
       .then((res: any) => {
         return res.data.data;
       });

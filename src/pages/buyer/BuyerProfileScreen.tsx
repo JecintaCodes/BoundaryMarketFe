@@ -70,8 +70,7 @@ const BuyerProfileScreen = () => {
           <div className="flex gap-[6px] items-center tablet:mt-[20px] ">
             <img
               className="w-[30px] h-[30px] rounded-[50%] object-cover hover:cursor-pointer hover:scale-[1.05] duration-700 "
-              src="https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg"
-              alt="pinimg"
+              src={data?.image}
             />
             <img
               className="w-[30px] h-[30px] rounded-[50%] object-cover hover:cursor-pointer hover:scale-[1.05] duration-700 "

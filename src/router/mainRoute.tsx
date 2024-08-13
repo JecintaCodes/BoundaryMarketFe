@@ -182,10 +182,7 @@ export const mainRoute = createBrowserRouter([
         index: true,
         element: <UserDashboard />,
       },
-      //   {
-      //     path: "/profile",
-      //     element: <UserProfileScreen />,
-      //   },
+
       {
         path: "/user/calender",
         element: <UserCalender />,
@@ -217,6 +214,18 @@ export const mainRoute = createBrowserRouter([
       },
       {
         path: "/user/add-product",
+        element: <AddProduct />,
+      },
+      {
+        path: "/user/update-profile",
+        element: <UserProfile />,
+      },
+      {
+        path: "/user/profile-screen",
+        element: <UserProfileScreen />,
+      },
+      {
+        path: "/user/add-pro",
         element: <AddProduct />,
       },
     ],

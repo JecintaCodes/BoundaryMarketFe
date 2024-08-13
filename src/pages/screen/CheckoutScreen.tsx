@@ -6,7 +6,7 @@ import {
   removeFromCart,
   removeQTYfromCart,
 } from "../../components/global/redux";
-import { updateStockProduct } from "../../api/Product"
+import { updateStockProduct } from "../../api/Product";
 
 const CheckoutScreen = () => {
   let dispatch = useDispatch();
@@ -22,10 +22,8 @@ const CheckoutScreen = () => {
           <hr />
 
           <div>
-          {
-            cart?.map((props:any)=>(
-
-                <div className="flex items-center">
+            {cart?.map((props: any) => (
+              <div className="flex items-center">
                 <img
                   className="w-[150px] h-[150px] object-cover mr-6"
                   src={props.image}
@@ -34,7 +32,7 @@ const CheckoutScreen = () => {
 
                 <div className="w-[300px]">
                   <div>{props.title}</div>
-                  <div>₦{props.cost}</div>
+                  <div>₦{props.amount}</div>
                 </div>
                 <div className="mr-1">
                   Stock: {props.QTYinStock - props.QTY}
@@ -58,7 +56,7 @@ const CheckoutScreen = () => {
                       >
                         <AiOutlineRight />
                       </div>
-                   )}
+                    )}
                     <div
                       className="border-r-0 border-l-2 p-2 rotate-90 border border-t-0 "
                       onClick={() => {
@@ -71,8 +69,7 @@ const CheckoutScreen = () => {
                 </div>
 
                 <div className="w-[100px] mr-8 font-bold ">
-                  ₦
-                  {props.cost * props.QTY}
+                  ₦{props.amount * props.QTY}
                 </div>
                 <div
                   className="hover:cursor-pointer"
@@ -83,9 +80,7 @@ const CheckoutScreen = () => {
                   <AiFillDelete size={30} />
                 </div>
               </div>
-            ))} 
-           
-            
+            ))}
           </div>
         </div>
       </div>
@@ -93,11 +88,14 @@ const CheckoutScreen = () => {
         <div className="w-[95%] border rounded-md p-3 ">
           <div className="flex justify-between items-center">
             <div>
-              {cart.length} 
-              Items</div>
+              {cart.length}
+              Items
+            </div>
             <div>
-              ₦ 500
-              {/* {cart.reduce((a: any, b: any) => a.cost * a.QTY + b.cost * b.QTY)} */}
+              {/* ₦ 500 */}
+              {cart.reduce(
+                (a: any, b: any) => a.amount * a.QTY + b.amount * b.QTY
+              )}
             </div>
           </div>
 
