@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
-import { allStoreHooks } from "../../hook/StoreHook";
 import { useSelector } from "react-redux";
 
 const Store = () => {
-  const { allStore } = allStoreHooks();
   const user = useSelector((state: any) => state?.myUser);
   return (
     <div>
@@ -11,12 +9,12 @@ const Store = () => {
         General Market
       </h1>
       <div className="flex mt-[30px] justify-center flex-wrap">
-        {allStore?.map((props: any) => (
+        {user?.map((props: any) => (
           <div className="w-[220px] small:w-[40%] mobile:w-[45%]  overflow-hidden h-[265px] m-2 flex justify-center gap-[20px] items-center  rounded-[7px] flex-col  ">
             <Link className="w-[100%]" to="/product">
               <img
                 className="w-[100%] h-[200px] object-cover hover:cursor-pointer hover:scale-[1.05] duration-700 transition-all"
-                src={props?.image}
+                src={props?.storeImg}
               />
             </Link>
             <div className="text-[12px] font-bold ">{props?.storeName}</div>

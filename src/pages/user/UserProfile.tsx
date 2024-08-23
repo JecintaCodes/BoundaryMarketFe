@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserInfo } from "../../api/UserApi";
-import { loginUser } from "../../components/global/redux";
+import { logInUser } from "../../components/global/redux";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const UserProfile = () => {
     formData.append("detail", detail);
     formData.append("image", image);
     await updateUserInfo(data?._id, formData).then((res: any) => {
-      dispatch(loginUser(res));
+      dispatch(logInUser(res));
     });
   };
 
@@ -32,7 +32,7 @@ const UserProfile = () => {
     <div className="w-[100%] h-[100vh] bg-[#e0dede] flex justify-center items-center ">
       <div className="w-[100%] h-[500px] mobile:min-h-[720px] flex justify-center items-center mobile:flex-col mobile:p-5 ">
         <form className="w-[50%] h-[100%] mobile:w-[100%] ">
-          <div className="w-[80%] min-h-[80%] bg-white rounded p-5 mt-[20px] ">
+          <div className="w-[80%] min-h-[50%] bg-white rounded p-5 mt-[20px] ">
             <center className="text-[17px] small:text-[13px] font-semibold small:font-bold mobile:text-[14px] ">
               Update Profile
             </center>

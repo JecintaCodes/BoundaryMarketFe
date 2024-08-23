@@ -3,11 +3,10 @@ import { GiExpense } from "react-icons/gi";
 import { FaBorderNone } from "react-icons/fa";
 import { CiBag1 } from "react-icons/ci";
 import { MdPerson } from "react-icons/md";
-// import { useSelector } from "react-redux";
-// import { allBuyerHooks } from "../../hook/BuyerHook";
+import { useSelector } from "react-redux";
 
 const AdminDashboard = () => {
-  // const myBuyer = useSelector((state:any)=>state?.buyer);
+  const user = useSelector((state: any) => state?.user);
 
   return (
     <div className="w-[100%] h-[100%]   ">
@@ -27,11 +26,9 @@ const AdminDashboard = () => {
               </div>
 
               <div className="text-[15px] font-semibold mt-[10px] text-[#456104] small:text-[10px] mobile:text-[10px] small:mt-[5px] mobile:mt-[5px] mobilel:mt-[5px] mobilel:text-[11px] tablet:text-[12px] tablet:mt-[5px] ">
-                Total Customers
+                my Profile
               </div>
-              <div className="text-[15px] font-bold mt-[10px] small:text-[10px] mobile:text-[10px] mobilel:text-[11px] tablet:text-[11px]  ">
-                0
-              </div>
+              <div className="text-[15px] font-bold mt-[10px] small:text-[10px] mobile:text-[10px] mobilel:text-[11px] tablet:text-[11px]  "></div>
             </div>
 
             {/* second */}
@@ -45,7 +42,7 @@ const AdminDashboard = () => {
                 Total Users
               </div>
               <div className="text-[15px] font-bold mt-[10px] small:text-[10px] mobile:text-[10px] mobilel:text-[11px] tablet:text-[11px]  ">
-                0
+                {user?.totalUse}
               </div>
             </div>
 
@@ -57,11 +54,9 @@ const AdminDashboard = () => {
               </div>
 
               <div className="text-[15px] font-semibold mt-[10px] text-[#456104] small:text-[10px] mobile:text-[10px] small:mt-[5px] mobile:mt-[5px] mobilel:mt-[5px] mobilel:text-[11px] tablet:text-[12px] tablet:mt-[5px] ">
-                Total Admin
+                update profile
               </div>
-              <div className="text-[15px] font-bold mt-[10px] small:text-[10px] mobile:text-[10px] mobilel:text-[11px] tablet:text-[11px]  ">
-                0
-              </div>
+              <div className="text-[15px] font-bold mt-[10px] small:text-[10px] mobile:text-[10px] mobilel:text-[11px] tablet:text-[11px]  "></div>
             </div>
             {/* fourth */}
 

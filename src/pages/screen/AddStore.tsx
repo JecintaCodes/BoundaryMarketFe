@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { createStore } from "../../api/StoreApi";
-import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const AddProduct = () => {
   const [category, setCategory] = useState("");
@@ -13,7 +12,7 @@ const AddProduct = () => {
   const [storeAvatar, setStoreAvatar]: any = useState("");
 
   const formData = new FormData();
-  const storeID = useParams();
+  const userID = useSelector((state: any) => state?.myUser);
 
   formData.append("category", category);
   formData.append("storeSocialMediaAcc", storeSocialMediaAcc);
@@ -41,7 +40,6 @@ const AddProduct = () => {
         border: "1px solid rgba( 255, 255, 255, 0.18 )",
       }}
     >
-      {/* <div className="w-full h-full absolute top-0 left-0 hover:cursor-pointer " /> */}
       <div className="flex justify-center border small:border-none small:ml-2 small:p-2 p-5 small:mr-2 rounded-md absolute z-[3]  ">
         <div className=" ml-4">
           <div className="flex flex-col mt-3 ">
@@ -110,9 +108,6 @@ const AddProduct = () => {
             <label
               htmlFor="image"
               className="flex items-center h-[50px] justify-center text-white bg-purple-900 hover:cursor-pointer duration-300 transition-all hover:scale-[1.02] rounded-sm mb-4 "
-              // onClick={() => {
-              //   // setToggle(false);
-              // }}
             >
               upload images
             </label>
@@ -126,11 +121,11 @@ const AddProduct = () => {
             />
             <div
               className="flex items-center h-[50px] justify-center small:text-[12px] mobile:text-[12px] text-white bg-[#fa9608] hover:cursor-pointer duration-300 transition-all hover:scale-[1.02] rounded-sm small:h-[35px] mobile:h-[35px]  "
-              onClick={() => {
-                createStore(formData, storeID).then((res) => {
-                  console.log(res);
-                });
-              }}
+              // onClick={() => {
+              //   // createStore(formData, userID).then((res) => {
+              //     // console.log(res);
+              //   });
+              // }}
             >
               Add Store
             </div>

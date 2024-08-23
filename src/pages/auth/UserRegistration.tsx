@@ -5,24 +5,24 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { createUser } from "../../api/UserApi";
 import { PulseLoader } from "react-spinners";
+import { useDispatch, useSelector } from "react-redux";
 
 const UserRegistration = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  // const adminID = ((state:any)=>state.myAdmin)
-  const { adminID } = useParams();
-  console.log(adminID, "Hry");
+  const adminID = useSelector((state: any) => state.user);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const schema = yup.object({
     name: yup.string().required(),
     email: yup.string().required().lowercase(),
+    address: yup.string().required(),
     password: yup.string().required(),
     confirmPassword: yup
       .string()
       .required()
       .oneOf([yup.ref("password")]),
-    // secretCode: yup.string().required(),
   });
 
   const { register, handleSubmit, reset } = useForm({
@@ -31,17 +31,13 @@ const UserRegistration = () => {
 
   const onSubmit = handleSubmit(async (data: any) => {
     setLoading(true);
-    const { email, name, password } = data;
-    // if (!data.secretCode || data.secretCode !== "AjegunleCore") {
-    //   alert("go and collect the right secret code from the personnel");
-    // }
-    createUser({ email, name, password,  }, adminID).then(() => {
-      reset();
+    console.log("handle submit", data);
+    createUser(data, adminID?._id).then(() => {
       navigate("/user-sign-in");
     });
     setLoading(false);
   });
-  // console.log(loading);
+
   return (
     <div
       className="w-[100%] h-[100vh] flex justify-center items-center  "
@@ -69,6 +65,12 @@ const UserRegistration = () => {
         />
         <input
           className="w-[100%] h-[50px] mt-[20px] rounded p-[10px] outline-none placeholder:text-[12px] placeholder:text-[#d1cdcd] bg-transparent border-[2px] text-[12px] "
+          type="text"
+          placeholder="Your Address  "
+          {...register("address")}
+        />
+        <input
+          className="w-[100%] h-[50px] mt-[20px] rounded p-[10px] outline-none placeholder:text-[12px] placeholder:text-[#d1cdcd] bg-transparent border-[2px] text-[12px] "
           type="email"
           placeholder="email "
           {...register("email")}
@@ -87,9 +89,6 @@ const UserRegistration = () => {
         />
 
         <button
-          onClick={() => {
-            alert("Clicked");
-          }}
           className="w-[100%] h-[50px] mt-[20px] rounded p-[10px]  hover:cursor-pointer hover:scale-[1.05] transition-all duration-500 "
           type="submit"
           style={{
@@ -100,9 +99,9 @@ const UserRegistration = () => {
           }}
         >
           {loading ? (
-            <>
+            <div>
               <PulseLoader />
-            </>
+            </div>
           ) : (
             "Sign Up"
           )}

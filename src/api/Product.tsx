@@ -1,13 +1,20 @@
 import axios from "axios";
 
-// let URL: string = "http://localhost:2003/api/v1";
-let URL: string = "https://boundarymarket.onrender.com/api/v1";
+let URL: string = "http://localhost:2003/api/v1";
+// let URL: string = "https://boundarymarket.onrender.com/api/v1";
 
-export const createProduct = async (data: any) => {
+export const createProduct = async (data: any, userID: string) => {
   const config: any = {
     "content-type": "multipart/form-data",
   };
-  return await axios.post(`${URL}/create-product`, data, config);
+  return await axios.post(`${URL}/${userID}/register-products`, data, config);
+};
+export const purchaseProduct = async (data: any, userID: string, productID) => {
+  return await axios
+    .post(`${URL}/${userID}/${productID}/register-products`, data)
+    .then((res: any) => {
+      return res.data.data;
+    });
 };
 
 export const readProduct = async () => {
@@ -23,6 +30,11 @@ export const readOneProduct = async (productID: string) => {
       return res.data.data;
     });
 };
+export const ViewProductOrder = async (userID: string) => {
+  return await axios.get(`${URL}/${userID}/view-orders`).then((res: any) => {
+    return res.data.data;
+  });
+};
 
 export const updateStockProduct = async (productID: string, data: number) => {
   return await axios
@@ -31,10 +43,9 @@ export const updateStockProduct = async (productID: string, data: number) => {
       return res.data.data;
     });
 };
-
-export const updateToggleProduct = async (productID: string, data: boolean) => {
+export const deleteStockProduct = async (productID: string, userID: number) => {
   return await axios
-    .patch(`${URL}/update-toggle-product/${productID}`, { toggle: data })
+    .patch(`${URL}/${userID}/${productID}/update-stock-product`)
     .then((res: any) => {
       return res.data.data;
     });

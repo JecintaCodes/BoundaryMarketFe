@@ -6,9 +6,10 @@ import {
   AiOutlineProfile,
 } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logOutUser } from "../../components/global/redux";
 const UserSlider = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   return (
     <div>
@@ -37,13 +38,6 @@ const UserSlider = () => {
               </div>
             </Link>
 
-            <Link to="/user/store">
-              <div className="w-[100%] h-[50px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#18fb18a9] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] relative mt-[20px] ">
-                <AiOutlineProfile />
-                <div>myStore</div>
-              </div>
-            </Link>
-
             <Link to="/user/order">
               <div className="w-[100%] h-[50px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#18fb18a9] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] tablet:hidden  ">
                 <AiOutlineProfile />
@@ -51,28 +45,29 @@ const UserSlider = () => {
               </div>
             </Link>
 
-            <Link to="/User/histroy">
+            {/* <Link to="/User/histroy">
               <div className="w-[100%] h-[50px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#18fb18a9] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
                 <AiOutlineRadiusSetting />
                 <div>Histroy</div>
               </div>
-            </Link>
+            </Link> */}
             <Link to="/product">
               <div className="w-[100%] h-[50px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#18fb18a9] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
                 <AiOutlineRadiusSetting />
                 <div>Products</div>
               </div>
             </Link>
-            <Link to="/user/histroy">
-              <div className="w-[100%] h-[50px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#18fb18a9] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
-                <AiOutlineRadiusSetting />
-                <div>Setting</div>
-              </div>
-            </Link>
+            {/* <Link to="/user/histroy"> */}
+            <div className="w-[100%] h-[50px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#18fb18a9] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
+              <AiOutlineRadiusSetting />
+              <div>Setting</div>
+            </div>
+            {/* </Link> */}
             <div
               className="w-[100%] h-[50px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#18fb18a9] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] "
               onClick={() => {
                 dispatch(logOutUser());
+                navigate("/");
               }}
             >
               <AiOutlineRadiusSetting />

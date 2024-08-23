@@ -7,7 +7,7 @@ import {
 } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { logOutBuyer } from "../../components/global/redux";
+import { logOutUser } from "../../components/global/redux";
 
 const BuyerSlider = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const BuyerSlider = () => {
   // const buyerID = useSelector((state:any)=>state?.myBuyer);
 
   const onHandleLogOut = () => {
-    dispatch(logOutBuyer());
+    dispatch(logOutUser());
     navigate("/");
   };
 

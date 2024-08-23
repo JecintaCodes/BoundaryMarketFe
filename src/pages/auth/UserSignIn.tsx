@@ -4,9 +4,9 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { signInUser } from "../../api/UserApi";
-import { loginUser } from "../../components/global/redux";
 import { BeatLoader } from "react-spinners";
 import { useDispatch } from "react-redux";
+import { logInUser } from "../../components/global/redux";
 
 const UserSignIn = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const UserSignIn = () => {
     const { email, password } = res;
     setLoading(true);
     signInUser({ email, password }).then((res) => {
-      dispatch(loginUser(res));
+      dispatch(logInUser(res));
       navigate("/user");
     });
     setLoading(false);
@@ -75,9 +75,9 @@ const UserSignIn = () => {
           }}
         >
           {loading ? (
-            <>
+            <div>
               <BeatLoader />
-            </>
+            </div>
           ) : (
             "Sign In"
           )}

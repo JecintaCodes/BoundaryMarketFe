@@ -3,12 +3,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { signINAdmin } from "../../api/AdminApi";
-import { loginAdmin } from "../../components/global/redux";
 import { useGSAP } from "@gsap/react";
 import { useDispatch } from "react-redux";
 import gsap from "gsap";
 import { BeatLoader } from "react-spinners";
+import { signInUser } from "../../api/UserApi";
+import { logInUser } from "../../components/global/redux";
 
 const AdminSignIN = () => {
   const dispatch = useDispatch();
@@ -28,35 +28,21 @@ const AdminSignIN = () => {
     password: yup.string().required(),
   });
 
-  const { register, handleSubmit, } = useForm({
+  const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
 
-  
   const onhandleSubmit = handleSubmit(async (data: any) => {
     setLoading(true);
     const { email, password } = data;
     console.log("handle submit", { email, password });
-    signINAdmin({ email, password }).then((res: any) => {
-      dispatch(loginAdmin(res));
+    signInUser({ email, password }).then((res: any) => {
+      dispatch(logInUser(res));
       // reset();
       navigate("/admin");
     });
-    setLoading(false)
+    setLoading(false);
   });
-
-  // const onhandleSubmit = handleSubmit(async (data: any) => {
-  //   setLoading(true);
-  //   const { email, password } = data;
-  //   signINAdmin({ email, password }).then((res: any) => {  
-  //     dispatch(loginAdmin(res));
-  //     navigate("/admin");
-  //     // return res;
-  //   });
-  //   setLoading(false);
-  // });
-
-  // console.log(loading)
 
   return (
     <div
@@ -120,9 +106,9 @@ const AdminSignIN = () => {
             //   ></div>
             // </div>
 
-            <>
+            <div>
               <BeatLoader />
-            </>
+            </div>
           ) : (
             "Sign In"
           )}

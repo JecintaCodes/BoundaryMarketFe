@@ -2,17 +2,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { signInBuyer } from "../../api/BuyerApi";
 import { useState } from "react";
-import { loginBuyer } from "../../components/global/redux";
-import {BeatLoader} from "react-spinners"
+import { BeatLoader } from "react-spinners";
 import { useDispatch } from "react-redux";
+import { signInUser } from "../../api/UserApi";
+import { logInUser } from "../../components/global/redux";
 
 const SignIn = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const schema = yup.object({
     email: yup.string().required(),
     password: yup.string().required(),
@@ -26,12 +26,12 @@ const SignIn = () => {
     setLoading(true);
     const { email, password } = data;
     console.log("handle submit", { email, password });
-    signInBuyer({ email, password }).then((res: any) => {
-      dispatch(loginBuyer(res));
+    signInUser({ email, password }).then((res: any) => {
+      dispatch(logInUser(res));
       reset();
-      navigate("/store");
+      navigate("/product");
     });
-    setLoading(false)
+    setLoading(false);
   });
   // console.log(loading);
 
@@ -78,16 +78,13 @@ const SignIn = () => {
           }}
           // onClick={}
         >
-         {
-            loading ? (
-                <>
-                <BeatLoader/>
-                </>
-            ):(
-                "Sign In"
-                
-            )
-         }
+          {loading ? (
+            <div>
+              <BeatLoader />
+            </div>
+          ) : (
+            "Sign In"
+          )}
         </button>
         <div className="w-[100%] h-[50px] mt-[20px] flex justify-center gap-2 text-[12px] ">
           <div>Don't have an account?</div>

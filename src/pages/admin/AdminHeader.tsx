@@ -17,7 +17,7 @@ const AdminHeader = () => {
             BoundaryMarket
           </div>
           <div className="">
-            <AiOutlineArrowDown className="hover:cursor-pointer text-[#456104] " />
+            <AiOutlineMenu className="hover:cursor-pointer text-[#456104] " />
           </div>
         </div>
         <div className="text-[25px] font-bold text-[#456104]  small:text-[12px] hover:cursor-pointer mobile:text-[12px] mobilel:text-[12px] ">
@@ -31,17 +31,20 @@ const AdminHeader = () => {
           />
         </div>
         <div className=" flex gap-5 small:flex mobile:flex  ">
-          <div className="relative hidden small:flex mobile:flex  animate-bounce ">
-            <AiOutlineBell className="hover:cursor-pointer" />
-            <div className="flex items-center justify-center rounded-full bg-red-500 text-white text-[10px] w-[15px] h-[15px] absolute top-0 left-2 hover:cursor-pointer hover:animate-spin ">
+          <div className="relative hidden small:flex mobile:flex  mobilel:flex animate-bounce ">
+            <AiOutlineBell className="hover:cursor-pointer small:mr-5 mobile:mr-5 mobilel:mr-5 " />
+            <div className="flex items-center justify-center rounded-full bg-orange-500 text-white text-[10px] w-[15px] h-[15px] absolute top-0 left-2 hover:cursor-pointer hover:animate-spin ">
               0
+            </div>
+            <div className="small:flex mobile:flex mobilel:flex ">
+              <AiOutlineArrowDown className="hover:cursor-pointer text-[#456104] " />
             </div>
           </div>
           <div className=" hidden small:flex mobile:flex mobilel:hidden  ">
             <AiOutlineMenu />
           </div>
         </div>
-        <div className="flex justify-center items-center gap-[20px] small:hidden mobile:hidden ">
+        <div className="flex justify-center items-center gap-[20px] small:hidden mobile:hidden mobilel:hidden ">
           <div className="relative text-[#456104] ">
             <AiOutlineBell className="hover:cursor-pointer animate-bounce " />
             <div className="flex items-center justify-center rounded-full bg-orange-500 text-white text-[10px] w-[15px] h-[15px] absolute top-0 left-2 hover:cursor-pointer animate-bounce">

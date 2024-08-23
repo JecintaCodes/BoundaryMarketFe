@@ -4,11 +4,7 @@ import {
   AiOutlineMenu,
 } from "react-icons/ai";
 import { useSelector } from "react-redux";
-// import { oneBuyerHooks } from "../../hook/BuyerHook";
-
 const BuyerHeader = () => {
-  // const {data} = oneBuyerHooks();
-  // console.log(data)
   const data = useSelector((state: any) => state?.myBuyer);
   return (
     <div className="w-[100%] h-[70px] flex justify-center  ">
@@ -39,7 +35,7 @@ const BuyerHeader = () => {
             <div className="w-[30px] h-[30px] rounded-[50%] ">
               <img
                 className="w-[100%] h-[100%] rounded-[50%]  hover:cursor-pointer hover:scale-[1.05] transition-all duration-700   "
-                src="https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg"
+                src={data?.image}
                 alt="pinimg"
               />
             </div>

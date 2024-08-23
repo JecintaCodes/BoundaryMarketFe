@@ -10,20 +10,15 @@ import { CiLogout } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { logOutAdmin } from "../../components/global/redux";
-
+import { logOutUser } from "../../components/global/redux";
 const AdminSlider = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const adminID = useSelector((state: any) => state?.myAdmin);
-  console.log(adminID);
 
-
-  const handleLogOut = ()=>{
-    dispatch(logOutAdmin())
-    navigate("/")
-  }
-  
+  const handleLogOut = () => {
+    dispatch(logOutUser());
+    navigate("/");
+  };
 
   return (
     <div>
@@ -44,12 +39,12 @@ const AdminSlider = () => {
               </div>
             </div>
 
-           <Link to="/admin/calender">
-           <div className="w-[100%] h-[30px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#456104] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
-              <AiOutlineCalendar />
-              <div>Calender</div>
-            </div>
-           </Link>
+            <Link to="/admin/calender">
+              <div className="w-[100%] h-[30px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#456104] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
+                <AiOutlineCalendar />
+                <div>Calender</div>
+              </div>
+            </Link>
             <Link to="/admin/database">
               <div className="w-[100%] h-[30px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#456104] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
                 <AiOutlineDatabase />
@@ -62,34 +57,32 @@ const AdminSlider = () => {
                 <div>Orders</div>
               </div>
             </Link>
-            <Link to="/admin/shop">
-              <div className="w-[100%] h-[30px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#456104] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px]">
-                <AiOutlineRadiusSetting />
-                <div>Shops</div>
-              </div>
-            </Link>
+
             <Link to="/admin/histroys">
               <div className="w-[100%] h-[30px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#456104] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
                 <AiOutlineRadiusSetting />
                 <div>Histroy</div>
               </div>
             </Link>
-            <Link to={`/${adminID}/user-sign-up`}>
+            <Link to="/user-sign-up">
               <div className="w-[100%] h-[30px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#456104] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
                 <CgProfile />
                 <div>createUsers</div>
               </div>
             </Link>
-            <div className="w-[100%] h-[30px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#456104] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
-              <AiOutlineRadiusSetting />
-              <div>Products</div>
-            </div>
+            <Link to="/product">
+              <div className="w-[100%] h-[30px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#456104] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
+                <AiOutlineRadiusSetting />
+                <div>Products</div>
+              </div>
+            </Link>
             <div className="w-[100%] h-[30px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#456104] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
               <AiOutlineRadiusSetting />
               <div>Settings</div>
             </div>
-            <div className="w-[100%] h-[30px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#456104] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] "
-          onClick={handleLogOut}
+            <div
+              className="w-[100%] h-[30px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#456104] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] "
+              onClick={handleLogOut}
             >
               <CiLogout />
               <div>LogOut</div>

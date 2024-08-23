@@ -4,9 +4,12 @@ import { FaBorderNone } from "react-icons/fa";
 import { MdPerson, MdStore } from "react-icons/md";
 import { CiBag1 } from "react-icons/ci";
 import { AiOutlineProduct } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const UserDashboard = () => {
+  // const { userID } = useParams();
+  const userID = useSelector((state: any) => state?.myUser);
   return (
     <div className="w-[100%] h-[100%]   ">
       <div className="w-[100%] h-[100%] flex justify-center ">
@@ -58,9 +61,10 @@ const UserDashboard = () => {
                 </div>
               </Link>
             </div>
-            {/* fourth */}
 
+            {/* fourth */}
             <div className="w-[15%] h-[100px] flex justify-center flex-col items-center bg-[#f9f0f0] rounded hover:cursor-pointer hover:duration-700 hover:transition-all hover:scale-[1.05] small:w-[80px]  mobile:w-[80px] mobilel:w-[100px] p-1  ">
+              {/* <Link to={`/${userID}/${storeID}/user/add-pro`}> */}
               <Link to="/user/add-pro">
                 <div className="text-[#456104] font-bold text-[17px] small:text-[12px] mobile:text-[13px] mobilel:text-[13px] tablet:text-[13px] ">
                   <AiOutlineProduct />

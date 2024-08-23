@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { createProduct } from "../../api/Product";
+// import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const AddProduct = () => {
+  const userID = useSelector((state: any) => state?.user);
+  console.log(userID);
   const [title, setTitle] = useState("");
   const [amount, setAmount]: any = useState(0);
-  // const [rating, setRating]: any = useState(0);
+  const [image, setImage]: any = useState(0);
   const [QTYinStock, setQTYinStock]: any = useState(0);
   const [description, setDescription]: any = useState("");
 
@@ -15,13 +19,13 @@ const AddProduct = () => {
   // formData.append("rating", rating);
   formData.append("QTYinStock", QTYinStock);
   formData.append("description", setDescription);
+  formData.append("image", image);
 
   const onhandleImageUpload = (e: any) => {
-    let file = e.target.files;
-    console.log(file);
-    for (let i of file) {
-      formData.append("image", i);
-    }
+    let file = e.target.files[0];
+    //  const readFile = URL.createObjectURL(file);
+    setImage(file);
+    //  setAvatar(readFile);
   };
 
   return (
@@ -38,63 +42,63 @@ const AddProduct = () => {
       {/* <div className="w-full h-full absolute top-0 left-0 hover:cursor-pointer " /> */}
       <div className="flex justify-center border small:border-none small:ml-2 small:p-2 p-5 small:mr-2 rounded-md absolute z-[3]  ">
         <div className=" ml-4">
-
-        <label
-              htmlFor="pix"
-              className="flex items-center h-[50px] justify-center text-white bg-[#456104] hover:cursor-pointer duration-300 transition-all hover:scale-[1.02] rounded-sm mb-4 "
-              onClick={() => {
-                // setToggle(false);
-              }}
-            >
-              upload images
-            </label>
-            <input
-              id="pix"
-              className="hidden"
-              onChange={onhandleImageUpload}
-              type="file"
-              accept=".jpg,.png,.jpeg"
-              multiple
-            />
+          <label
+            htmlFor="image"
+            className="flex items-center h-[50px] justify-center text-white bg-[#456104] hover:cursor-pointer duration-300 transition-all hover:scale-[1.02] rounded-sm mb-4 "
+            onClick={() => {
+              // setToggle(false);
+            }}
+          >
+            upload images
+          </label>
+          <input
+            id="image"
+            className="hidden"
+            onChange={onhandleImageUpload}
+            type="file"
+            accept=".jpg,.png,.jpeg"
+            multiple
+          />
 
           <div className="flex flex-col mt-3 ">
-          <input
+            <input
               placeholder="title"
               className="border rounded-md w-[300px] h-[50px] my-2 pl-2 outline-none text-[15px] "
               value={title}
-              type="number"
+              type="text"
               onChange={(e: any) => setTitle(e.target.value)}
             />
-          <input
+            <input
               placeholder="amount"
               className="border rounded-md w-[300px] h-[50px] my-2 pl-2 outline-none text-[15px] "
               value={amount}
               type="number"
               onChange={(e: any) => setAmount(e.target.value)}
             />
-          <input
+            <input
               placeholder="quantity"
               className="border rounded-md w-[300px] h-[50px] my-2 pl-2 outline-none text-[15px] "
               value={QTYinStock}
               type="number"
               onChange={(e: any) => setQTYinStock(e.target.value)}
-              />
-              <input
+            />
+            <input
               placeholder="description"
               className="border rounded-md w-[300px] h-[50px] my-2 pl-2 outline-none text-[15px] "
               value={description}
-              type="number"
+              type="text"
               onChange={(e: any) => setDescription(e.target.value)}
             />
-           
+
             <div
-              className="flex items-center h-[50px] justify-center small:text-[12px] mobile:text-[12px] text-white bg-[#fa9608] hover:cursor-pointer duration-300 transition-all hover:scale-[1.02] rounded-sm small:h-[35px] mobile:h-[35px]  " 
+              className="flex items-center h-[50px] justify-center small:text-[12px] mobile:text-[12px] text-white bg-[#fa9608] hover:cursor-pointer duration-300 transition-all hover:scale-[1.02] rounded-sm small:h-[35px] mobile:h-[35px]  "
               onClick={() => {
-                createProduct(formData).then((res) => {
+                createProduct(formData, userID._id).then((res) => {
                   console.log(res);
                 });
+                // console.log("clicked");
               }}
-              >
+            >
               Add Product
             </div>
           </div>

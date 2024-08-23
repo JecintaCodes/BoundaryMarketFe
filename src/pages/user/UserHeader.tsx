@@ -52,7 +52,7 @@ const UserHeader = () => {
             <div className="w-[30px] h-[30px] rounded-[50%] ">
               <img
                 className="w-[100%] h-[100%] rounded-[50%]  hover:cursor-pointer hover:scale-[1.05] transition-all duration-700  "
-                src="https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg"
+                src={user?.image}
                 alt="pinimg"
               />
             </div>

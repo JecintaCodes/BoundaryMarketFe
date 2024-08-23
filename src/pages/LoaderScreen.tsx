@@ -1,6 +1,6 @@
 import ContentLoader from "react-content-loader";
 
-const DoorDashFavorite = (props: any) => (
+const LoaderScreen = (props: any) => (
   <ContentLoader
     width={450}
     height={400}
@@ -13,16 +13,13 @@ const DoorDashFavorite = (props: any) => (
     <rect x="44" y="323" rx="3" ry="3" width="119" height="6" />
     <rect x="42" y="77" rx="10" ry="10" width="388" height="217" />
   </ContentLoader>
-
-
-  
 );
 
-DoorDashFavorite.metadata = {
+LoaderScreen.metadata = {
   name: "Nic Bovee", // My name
   github: "ghettifish", // Github username
   description: "A simple favorite from the DoorDash local favorites.", // Little tagline
-  filename: "DoorDashFavorite", // filename of your loader
+  filename: "LoaderScreen", // filename of your loader
 };
 
-export default DoorDashFavorite;
+export default LoaderScreen;

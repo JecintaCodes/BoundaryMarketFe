@@ -1,66 +1,71 @@
-
-import { Link } from "react-router-dom"
-
+import { Link } from "react-router-dom";
 
 const ThirdCard = () => {
-
-    const data = [
-        {
-        image:`https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg`,
-        title:"Lorem ipsum dolor sit.",
-        details:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis ad fugit id natus maiores quibusdam reiciendis laboriosam quis delectus,",
-        butt:"Purchase",
-        },
-        {
-        image:`https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg`,
-        title:"Lorem ipsum dolor sit.",
-        details:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis ad fugit id natus maiores quibusdam reiciendis laboriosam quis delectus,",
-        butt:"Purchase",
-        },
-        {
-        image:`https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg`,
-        title:"Lorem ipsum dolor sit.",
-        details:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis ad fugit id natus maiores quibusdam reiciendis laboriosam quis delectus,",
-        butt:"Purchase",
-        },
-        {
-        image:`https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg`,
-        title:"Lorem ipsum dolor sit.",
-        details:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis ad fugit id natus maiores quibusdam reiciendis laboriosam quis delectus,",
-        butt:"Purchase",
-        },
-
-    ]
+  const data = [
+    {
+      image: `https://c.ndtvimg.com/2023-07/2qkikmj8_vegetables_625x300_05_July_23.jpg?im=FaceCrop,algorithm=dnn,width=620,height=350`,
+      title: "Vegitables and Fruits",
+      details:
+        "it is Rich in Vitamins and Minerals, Boosts Immune System, promotes,Promotes Digestive Health,Supports Healthy Weight,and reduce chronic dieases",
+      butt: "Purchase",
+    },
+    {
+      image: `https://pbs.twimg.com/media/DhPR_jwWsAArGl4?format=jpg&name=small`,
+      title: "Electronis and Gadgets",
+      details:
+        "Quality devices that meets high standards of performance, These products are designed to provide efficient functionality, ensuring a seamless user experience",
+      butt: "Purchase",
+    },
+    {
+      image: `https://st4.depositphotos.com/1001877/20108/i/1600/depositphotos_201082784-stock-photo-home-appliances-set-household-kitchen.jpg`,
+      title: "Home Appliances",
+      details:
+        "Home appliances that are electrical and mechanical devices designed to perform specific tasks and make household chores easier, like Refrigerators, gas cooker, Washing Machines and more.",
+      butt: "Purchase",
+    },
+    {
+      image: `https://st4.depositphotos.com/1001877/20108/i/1600/depositphotos_201082784-stock-photo-home-appliances-set-household-kitchen.jpg`,
+      title: "Construction Services",
+      details:
+        "Construction services is the processes and activities involved in building, maintaining, and repairing physical structures, infrastructure, and facilities.",
+      butt: "Purchase",
+    },
+  ];
 
   return (
     <div
-    className=" flex gap-[20px] small:flex small:justify-center small:items-center small:flex-wrap mobile:flex-wrap small:w-[100%] small:mt-[-70px] mobile:mt-[-10px] mobilel:flex-wrap  ">
-        {
-             data?.map((props:any)=>{
-                return(
-                    <div
-                    className=" h-[350px] tablet:w-[170px] bg-[#fa9608] w-[200px] rounded overflow-hidden small:h-[35%] small:w-[20%] mobile:h-[35%] mobile:w-[45%] mt-[30px] small:mt-[10px] mobile:mt-[10]  ">
-            <img 
-            className="w-[100%] h-[55%] object-cover rounded hover:scale-[1.05] hover:cursor-pointer transition-all duration-700  "
-            src={props?.image} alt="pinimg" />
-            <div className=" mt-[5px] ">
-                <div className="text-[15px] font-bold text-center small:text-[12px] mobile:text-[12px] mobilel:text-[12px] ">{props?.title}</div>
-                <center>
-                    <div className="w-[100%] text-[11px] mt-[5px]  small:text-[11px] mobile:text-[11px] mobilel:text-[12px] ">{props?.details} </div>
-                   <Link to="/sign-up">
-                   <button className="mt-[5px] h-[35px] p-[10px]  rounded-[30px] flex mobile:hidden small:hidden mobilel:hidden text-[10px] outline-none font-bold text-[white] hover:scale-[1.05] bg-[#456104]  hover:cursor-pointer transition-all duration-700 "
-                
-                   >{props?.butt}</button>
-                   </Link>
-                </center>
-            </div>
-        </div>
-)
-             })
-            
-        }
-    </div>
-  )
-}
+      className=" w-[100%] h-[350px] mobile:h-[600px] mobilel:h-[700px] small:h-[600px]
+     flex justify-center"
+    >
+      <div className=" w-[90%]  small:flex-wrap mobile:flex-wrap mobilel:flex-wrap flex gap-14 small:gap-[15px] mobile:gap-[15px] mobilel:gap-[15px] ">
+        {/* card */}
+        {data?.map((props: any) => (
+          <div className="w-[25%] small:w-[47%] mobile:w-[47%] mobilel:w-[47%] h-[100%] rounded-md overflow-hidden bg-[#fa9608] small:h-[300px] mobile:h-[300px] mobilel:h-[300px] ">
+            <img
+              className="w-[100%] h-[50%] hover:scale-[1.05] hover:cursor-pointer duration-700 transition-all  "
+              src={props?.image}
+              alt={props?.image}
+            />
+            <center className="w-[100%]">
+              <div className="text-[13px] font-bold small:text-[11px] mobile:text-[11px] mobilel:text-[11px]  ">
+                {props?.title}
+              </div>
+              <div className="text-[13px] w-[100%] small:text-[11px] mobile:text-[11px] mobilel:text-[11px] font-[medium]  ">
+                {props?.details}
+              </div>
 
-export default ThirdCard
+              <Link to="/sign-in">
+                <button className="text-[12px] p-2 bg-[#456104] rounded-md text-[#fa9608] mt-[10px] hover:scale-[1.05] hover:cursor-pointer duration-700 transition-all ">
+                  {props?.butt}
+                </button>
+              </Link>
+            </center>
+          </div>
+        ))}
+        {/* card */}
+      </div>
+    </div>
+  );
+};
+
+export default ThirdCard;

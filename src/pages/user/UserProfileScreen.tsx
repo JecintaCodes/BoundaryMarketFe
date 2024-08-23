@@ -5,14 +5,11 @@ import {
   AiOutlineMail,
 } from "react-icons/ai";
 import { useSelector } from "react-redux";
-import { useState } from "react";
-
 const UserProfileScreen = () => {
-  const user = useSelector((state: any) => state?.myUser);
-  const [avatar, setAvatar] = useState("");
+  const user = useSelector((state: any) => state?.user);
 
   return (
-    <div className="w-[90%] small:hidden mobile:hidden rounded-[10px] small:w-[80%] mobile:w-[80%] h-[100vh] bg-[white] flex justify-center overflow-hidden ">
+    <div className="w-[90%] rounded-[10px] small:w-[80%] mobile:w-[80%] h-[100vh] bg-[white] flex justify-center overflow-hidden ">
       <div className="w-[90%]  ">
         <div className="mt-[10px] w-[100%] flex justify-center flex-col items-center ">
           <Link to="/user/profile">
@@ -43,7 +40,7 @@ const UserProfileScreen = () => {
           <div className="text-[15px] font-bold small:text-[13px]  mobile:text-[13px] ">
             About Me
           </div>
-          <div className=" mt-[20px] text-[12px] text-[#c8c7c7] ">
+          <div className=" mt-[20px] text-[12px] text-[#918e8e] ">
             {user?.detail}
           </div>
         </div>

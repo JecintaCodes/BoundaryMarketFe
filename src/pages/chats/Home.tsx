@@ -1,23 +1,12 @@
 // import { useState } from "react";
 // import pix from "../../src/assets/man.png";
 import Notify from "../../pages/user/UserNotificationPage";
-import { allBuyerHooks, oneBuyerHooks,  } from "../../hook/BuyerHook";
-import DoorDashFavorite from "./LoaderScreen";
-import { addFriend, unFriend } from "../../api/friendAPI";
-
-// const Component = () => {
-//   // const [state] = useState<number>(1);
-
-//   // const randColor = () => {
-//   //   return "#" + Math.floor(Math.random() * 16777215).toString(16);
-//   // };
-
-//   return <div></div>;
-// };
+import { allUserHook, oneUserHook } from "../../hook/UserHook";
+import DoorDashFavorite from "../LoaderScreen";
 
 const Home = () => {
-  const { data } = oneBuyerHooks();
-  const { allBuyer, isLoading } = allBuyerHooks();
+  const { data } = oneUserHook();
+  const { alluser, isLoading } = allUserHook();
 
   console.log(data);
   return (
@@ -26,7 +15,7 @@ const Home = () => {
         <Notify />
       </div>
       <div className="my-6 ml-20">
-        welcome back <strong className="capitalize">{data?.userName}</strong>
+        welcome back <strong className="capitalize">{data?.username}</strong>
       </div>{" "}
       {isLoading ? (
         <div>
@@ -39,7 +28,7 @@ const Home = () => {
           className="grid sm:grid-cols-2 md:grid-cols-2
       lg:grid-cols-3 xl:grid-cols-4 gap-6 "
         >
-          {allBuyer?.map((props: any, i: number) => (
+          {alluser?.map((props: any, i: number) => (
             <div>
               {props._id !== data._id && (
                 <div
@@ -82,11 +71,11 @@ const Home = () => {
                         <button
                           className="mt-4 py-2 px-4 text-[15px]
        text-white bg-purple-600 rounded-sm"
-                          onClick={() => {
-                            unFriend(data._id, props._id).then((res) => {
-                              console.log(res);
-                            });
-                          }}
+                          // onClick={() => {
+                          //   unFriend(data._id, props._id).then((res) => {
+                          //     console.log(res);
+                          //   });
+                          // }}
                         >
                           un friend
                         </button>
@@ -94,11 +83,11 @@ const Home = () => {
                         <button
                           className="mt-4 py-2 px-4 text-[15px]
        text-white bg-purple-600 rounded-sm"
-                          onClick={() => {
-                            addFriend(data._id, props._id).then((res) => {
-                              console.log(res);
-                            });
-                          }}
+                          // onClick={() => {
+                          //   addFriend(data._id, props._id).then((res) => {
+                          //     console.log(res);
+                          //   });
+                          // }}
                         >
                           Add friend
                         </button>

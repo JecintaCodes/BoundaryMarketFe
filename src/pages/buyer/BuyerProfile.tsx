@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { updateBuyer } from "../../api/BuyerApi";
 import { useState } from "react";
-import { loginBuyer } from "../../components/global/redux";
+import { updateUserInfo } from "../../api/UserApi";
+import { logInUser } from "../../components/global/redux";
 
 const BuyerProfile = () => {
   const data = useSelector((state: any) => state.myBuyer);
@@ -23,15 +23,15 @@ const BuyerProfile = () => {
     formData.append("image", image);
     formData.append("name", name);
     formData.append("details", desc);
-    await updateBuyer(data?._id, formData).then((res) => {
-      dispatch(loginBuyer(res));
+    await updateUserInfo(data?._id, formData).then((res) => {
+      dispatch(logInUser(res));
     });
   };
 
   return (
     <div className="w-[100%] h-[88vh] bg-[#e0dede] flex justify-center items-center ">
       <div className="w-[100%] h-[500px] mobile:min-h-[720px] flex justify-center items-center mobile:flex-col mobile:p-5  ">
-        <form className="w-[50%] h-[100%] mobile:w-[100%] ">
+        <div className="w-[50%] h-[100%] mobile:w-[100%] ">
           <div className="w-[80%] min-h-[80%] bg-white rounded p-5 mt-[20px] ">
             <center className="text-[17px] small:text-[13px] font-semibold small:font-bold mobile:text-[14px] ">
               Update Profile
@@ -45,10 +45,6 @@ const BuyerProfile = () => {
                 setName(e.target.value)
               }
             />
-            {/* <center className="text-[17px] small:text-[13px] font-semibold small:font-bold mobile:text-[14px] ">
-              Update Profile Description
-            </center> */}
-
             <input
               className="w-[100%] text-[12px] h-[50px] p-2 bg-[#e0dede] outline-none mt-[20px]  "
               placeholder="tell us about your self"
@@ -94,7 +90,7 @@ const BuyerProfile = () => {
               </button>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
