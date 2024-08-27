@@ -87,28 +87,9 @@ const AdminSignIN = () => {
           }}
         >
           {loading ? (
-            // <div className="flex items-center justify-center gap-1">
-            //   <div
-            //     id="loader"
-            //     className="w-[8px] h-[8px] rounded-sm border border-black"
-            //   ></div>
-            //   <div
-            //     id="loader"
-            //     className="w-[8px] h-[8px] rounded-sm border border-black"
-            //   ></div>
-            //   <div
-            //     id="loader"
-            //     className="w-[8px] h-[8px] rounded-sm border border-black"
-            //   ></div>
-            //   <div
-            //     id="loader"
-            //     className="w-[8px] h-[8px] rounded-sm border border-black"
-            //   ></div>
-            // </div>
-
-            <div>
+            <>
               <BeatLoader />
-            </div>
+            </>
           ) : (
             "Sign In"
           )}

@@ -40,6 +40,7 @@ import UserStore from "../pages/user/UserStore";
 import AdminProfileScreen from "../pages/admin/AdminProfileScreen";
 import VerifyPayment from "../pages/payment/VerifyPayment";
 import MakePayment from "../pages/payment/MakePayment";
+import AddList from "../pages/screen/AddList";
 
 export const mainRoute = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const mainRoute = createBrowserRouter([
   {
     path: "/user-sign-up",
     element: <UserRegistration />,
+  },
+  {
+    path: "*",
+    element: <>Error</>,
   },
   {
     path: "/user-sign-in",
@@ -213,5 +218,9 @@ export const mainRoute = createBrowserRouter([
   {
     path: "/verify-payment",
     element: <VerifyPayment />,
+  },
+  {
+    path: "/add-list",
+    element: <AddList />,
   },
 ]);

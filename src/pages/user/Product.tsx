@@ -1,10 +1,11 @@
-import { Link, useParams } from "react-router-dom";
+// import { Link, useParams } from "react-router-dom";
 import ProductHeader from "./ProductHeader";
 import { useDispatch, useSelector } from "react-redux";
 import { allProductsHooks } from "../../hook/ProductHook";
 import { addToCart } from "../../components/global/redux";
 import LoaderScreen from "../LoaderScreen";
-
+import { AiOutlineOrderedList } from "react-icons/ai";
+import { Link } from "react-router-dom";
 const Product = () => {
   const { allProduct, isLoading } = allProductsHooks();
   const dispatch = useDispatch();
@@ -14,7 +15,11 @@ const Product = () => {
   return (
     <div>
       <ProductHeader />
-
+      <Link to="/add-list">
+        <div className=" fixed right-5 bottom-[100px] bg-[#456104] w-[50px] h-[60px] rounded-[50%] flex justify-center items-center small:w-[30px] small:h-[35px]   mobile:w-[30px] mobile:h-[35px]  mobilel:w-[30px] mobilel:h-[35px]   ">
+          <AiOutlineOrderedList className="text-[30px] text-[#fa9608] small:text-[15px] mobile:text-[15px] mobilel:text-[15px] " />
+        </div>
+      </Link>
       {isLoading ? (
         <div>
           {Array.from({ length: 20 }, () => (

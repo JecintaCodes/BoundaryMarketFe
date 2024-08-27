@@ -95,9 +95,9 @@ const Registration = () => {
           }}
         >
           {loading ? (
-            <div>
+            <>
               <BeatLoader />
-            </div>
+            </>
           ) : (
             "Sign Up"
           )}

@@ -6,7 +6,7 @@ import moment from "moment";
 const UserHistory = () => {
   const { userID } = useParams();
   const { data } = useProductOrder(userID);
-  const date = moment();
+  // const date = moment();
 
   return (
     <div className=" w-[100%] h-[100%] flex justify-center bg-[#f1eeee] ">

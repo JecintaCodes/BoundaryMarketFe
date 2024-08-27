@@ -12,7 +12,6 @@ const UserRegistration = () => {
   const adminID = useSelector((state: any) => state.user);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const schema = yup.object({
     name: yup.string().required(),
@@ -99,9 +98,9 @@ const UserRegistration = () => {
           }}
         >
           {loading ? (
-            <div>
+            <>
               <PulseLoader />
-            </div>
+            </>
           ) : (
             "Sign Up"
           )}

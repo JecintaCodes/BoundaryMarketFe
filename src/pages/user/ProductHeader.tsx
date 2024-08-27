@@ -13,9 +13,9 @@ const ProductHeader = () => {
   // console.log(buyerID)
   return (
     <div className="w-[100%] h-[90px] bg-[#456104] flex justify-center ">
-      <div className="w-[90%] small:w-[100%] mobile:w-[100%] flex justify-between items-center ">
+      <div className="w-[90%] small:w-[100%] mobile:w-[100%] mobilel:w-[100%] flex justify-between items-center ">
         <Link to="/">
-          <h3 className="text-4xl small:hidden mobile:hidden  text-[white] small:text-[px] mobile:-[0px] ">
+          <h3 className="text-4xl small:hidden mobile:hidden mobilel:hidden  text-[white] small:text-[px] mobile:-[0px] ">
             BoundaryMarket
           </h3>
         </Link>

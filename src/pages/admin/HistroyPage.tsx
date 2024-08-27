@@ -32,13 +32,13 @@ const HistroyPage = () => {
             <div className=" w-[100%] h-[50px]  mt-[25px] mb-3 flex items-center ">
               {/* date */}
               <div className="w-[20%] small:w-[10px] text-[14px] font-semibold small:text-[10px] mobile:text-[10px] mobilel:text-[10px] ">
-                date.format("MMMM Do YYYY")
+                {/* date.format("MMMM Do YYYY") */}
               </div>
               {/*end date */}
               {/* time */}
               <div className=" w-[10%] h-[50px] flex items-center gap-[10px] font-bold text-[14px] small:text-[10px] mobile:text-[10px] mobilel:text-[10px] ">
                 <AiOutlineClockCircle className="text-[17px] ml-[10px] small:mr-[-10px] mobile:mr-[-10px] mobilel:mr-[-10px] " />
-                <div>date.format("h:mm:ss a")</div>
+                <div>{/* date.format("h:mm:ss a") */}</div>
               </div>
               {/* time */}
               <div className=" w-[70%] small:w-[80%] h-[50px] flex items-center gap-[10px] font-bold text-[14px] bg-[#f1eeee] small:text-[10px] mobile:text-[10px] mobilel:text-[10px] small:ml-[20px] mobilel:ml-[20px] mobile:ml-[20px] ">

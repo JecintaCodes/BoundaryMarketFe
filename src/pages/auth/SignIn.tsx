@@ -76,12 +76,11 @@ const SignIn = () => {
             backdropFilter: "blur( 4px )",
             WebkitBackdropFilter: " blur( 4px )",
           }}
-          // onClick={}
         >
           {loading ? (
-            <div>
+            <>
               <BeatLoader />
-            </div>
+            </>
           ) : (
             "Sign In"
           )}

@@ -75,9 +75,9 @@ const UserSignIn = () => {
           }}
         >
           {loading ? (
-            <div>
+            <>
               <BeatLoader />
-            </div>
+            </>
           ) : (
             "Sign In"
           )}

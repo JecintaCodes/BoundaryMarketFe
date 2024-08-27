@@ -43,9 +43,16 @@ export const updateStockProduct = async (productID: string, data: number) => {
       return res.data.data;
     });
 };
-export const deleteStockProduct = async (productID: string, userID: number) => {
+export const deleteStockProduct = async (productID: string, userID: string) => {
   return await axios
-    .patch(`${URL}/${userID}/${productID}/update-stock-product`)
+    .delete(`${URL}/${userID}/${productID}/update-stock-product`)
+    .then((res: any) => {
+      return res.data.data;
+    });
+};
+export const createList = async (userID: string, data: any) => {
+  return await axios
+    .post(`${URL}/${userID}/create-list`, data)
     .then((res: any) => {
       return res.data.data;
     });

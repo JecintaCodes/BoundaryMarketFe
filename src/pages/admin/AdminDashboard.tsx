@@ -4,6 +4,7 @@ import { FaBorderNone } from "react-icons/fa";
 import { CiBag1 } from "react-icons/ci";
 import { MdPerson } from "react-icons/md";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
   const user = useSelector((state: any) => state?.user);
@@ -26,7 +27,7 @@ const AdminDashboard = () => {
               </div>
 
               <div className="text-[15px] font-semibold mt-[10px] text-[#456104] small:text-[10px] mobile:text-[10px] small:mt-[5px] mobile:mt-[5px] mobilel:mt-[5px] mobilel:text-[11px] tablet:text-[12px] tablet:mt-[5px] ">
-                my Profile
+                <Link to="/admin/profiles">my Profile</Link>
               </div>
               <div className="text-[15px] font-bold mt-[10px] small:text-[10px] mobile:text-[10px] mobilel:text-[11px] tablet:text-[11px]  "></div>
             </div>
@@ -42,7 +43,7 @@ const AdminDashboard = () => {
                 Total Users
               </div>
               <div className="text-[15px] font-bold mt-[10px] small:text-[10px] mobile:text-[10px] mobilel:text-[11px] tablet:text-[11px]  ">
-                {user?.totalUse}
+                {user?.length}
               </div>
             </div>
 
@@ -54,7 +55,7 @@ const AdminDashboard = () => {
               </div>
 
               <div className="text-[15px] font-semibold mt-[10px] text-[#456104] small:text-[10px] mobile:text-[10px] small:mt-[5px] mobile:mt-[5px] mobilel:mt-[5px] mobilel:text-[11px] tablet:text-[12px] tablet:mt-[5px] ">
-                update profile
+                <Link to="/admin/profile">update profile</Link>
               </div>
               <div className="text-[15px] font-bold mt-[10px] small:text-[10px] mobile:text-[10px] mobilel:text-[11px] tablet:text-[11px]  "></div>
             </div>
