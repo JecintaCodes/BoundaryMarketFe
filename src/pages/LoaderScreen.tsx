@@ -2,11 +2,11 @@ import ContentLoader from "react-content-loader";
 
 const LoaderScreen = (props: any) => (
   <ContentLoader
-    width={450}
-    height={400}
+    width={200}
+    height={250}
     viewBox="0 0 450 400"
-    backgroundColor="#f0f0f0"
-    foregroundColor="#dedede"
+    backgroundColor="rgb(251, 250, 250)"
+    foregroundColor="#c2bbbb"
     {...props}
   >
     <rect x="43" y="304" rx="4" ry="4" width="271" height="9" />

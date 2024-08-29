@@ -22,7 +22,7 @@ const Product = () => {
         </div>
       </Link>
       {isLoading ? (
-        <div>
+        <div className=" flex flex-wrap  ">
           {Array.from({ length: 20 }, () => (
             <LoaderScreen />
           ))}
