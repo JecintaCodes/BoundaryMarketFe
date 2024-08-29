@@ -6,7 +6,7 @@ const URL: string = "http://localhost:2003/api/v1";
 export const createUser = async (data: any, adminID: any) => {
   try {
     return await axios
-      .post(`${URL}/${adminID}/register-user`, data)
+      .post(`${URL}/${adminID}/register-users`, data)
       .then((res: any) => {
         return res.data.data;
       });

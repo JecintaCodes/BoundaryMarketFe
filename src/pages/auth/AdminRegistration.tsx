@@ -26,6 +26,7 @@ const AdminRegistration = () => {
     name: yup.string().required(),
     secretCode: yup.string().required(),
     address: yup.string().required(),
+    telNumb: yup.string().required(),
     email: yup.string().required().lowercase(),
     password: yup.string().required(),
     confirm: yup
@@ -39,8 +40,15 @@ const AdminRegistration = () => {
   });
 
   const onHandleSubmit = handleSubmit(async (data: any) => {
-    const { secretCode, name, email, password, confirmPassword, address } =
-      data;
+    const {
+      secretCode,
+      name,
+      email,
+      password,
+      confirmPassword,
+      address,
+      telNumb,
+    } = data;
     setLoading(true);
     if (!data.secretCode || data.secretCode !== "AjegunleCore") {
       alert("Invalid secret code");
@@ -54,6 +62,7 @@ const AdminRegistration = () => {
       address,
       password,
       confirmPassword,
+      telNumb,
     }).then(() => {
       navigate("/admin-sign-in");
     });
@@ -94,6 +103,12 @@ const AdminRegistration = () => {
           type="text"
           placeholder="Your Address  "
           {...register("address")}
+        />
+        <input
+          className="w-[100%] h-[50px] mt-[20px] rounded p-[10px] outline-none placeholder:text-[12px] placeholder:text-[#d1cdcd] bg-transparent border-[2px] text-[12px] "
+          type="text"
+          placeholder="Telephone Number  "
+          {...register("telNumb")}
         />
         <input
           className="w-[100%] h-[50px] mt-[20px] rounded p-[10px] outline-none placeholder:text-[12px] placeholder:text-[#d1cdcd] bg-transparent border-[2px] text-[12px] "

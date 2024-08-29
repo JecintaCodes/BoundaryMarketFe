@@ -6,6 +6,7 @@ import { addToCart } from "../../components/global/redux";
 import LoaderScreen from "../LoaderScreen";
 import { AiOutlineOrderedList } from "react-icons/ai";
 import { Link } from "react-router-dom";
+
 const Product = () => {
   const { allProduct, isLoading } = allProductsHooks();
   const dispatch = useDispatch();

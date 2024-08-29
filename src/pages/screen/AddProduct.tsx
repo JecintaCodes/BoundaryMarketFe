@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createProduct } from "../../api/Product";
 // import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { FaSpinner } from "react-icons/fa";
 
 const AddProduct = () => {
   const userID = useSelector((state: any) => state?.user);
@@ -11,7 +12,7 @@ const AddProduct = () => {
   const [image, setImage]: any = useState(0);
   const [QTYinStock, setQTYinStock]: any = useState(0);
   const [description, setDescription]: any = useState("");
-
+  const [loading, setLoading] = useState<boolean>(false);
   const formData = new FormData();
 
   formData.append("title", title);
@@ -93,13 +94,21 @@ const AddProduct = () => {
             <div
               className="flex items-center h-[50px] justify-center small:text-[12px] mobile:text-[12px] text-white bg-[#fa9608] hover:cursor-pointer duration-300 transition-all hover:scale-[1.02] rounded-sm small:h-[35px] mobile:h-[35px]  "
               onClick={() => {
+                // setLoading(true);
                 createProduct(formData, userID._id).then((res) => {
                   console.log(res);
                 });
+                // setLoading(false);
                 // console.log("clicked");
               }}
             >
-              Add Product
+              {loading ? (
+                <div>
+                  <FaSpinner />
+                </div>
+              ) : (
+                <div>Add Product</div>
+              )}
             </div>
           </div>
         </div>

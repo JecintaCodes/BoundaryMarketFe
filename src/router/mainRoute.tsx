@@ -24,7 +24,7 @@ import UserHistory from "../pages/user/UserHistory";
 import UserOrders from "../pages/user/UserOrders";
 import AdminNotification from "../pages/admin/AdminNotification";
 import Shops from "../pages/admin/Shops";
-import Store from "../pages/screen/Store";
+// import Store from "../pages/screen/Store";
 import Product from "../pages/user/Product";
 import CalenderPage from "../pages/admin/CalenderPage";
 import BuyerLayout from "../pages/buyer/BuyerLayout";
@@ -79,16 +79,7 @@ export const mainRoute = createBrowserRouter([
     path: "/check-out",
     element: <CheckoutScreen />,
   },
-  {
-    path: "/store",
-    element: <Layout />,
-    children: [
-      {
-        index: true,
-        element: <Store />,
-      },
-    ],
-  },
+
   {
     path: "/product",
     element: <Product />,

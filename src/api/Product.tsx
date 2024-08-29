@@ -30,6 +30,13 @@ export const readOneProduct = async (productID: string) => {
       return res.data.data;
     });
 };
+export const readOneUserProduct = async (userID: string) => {
+  return await axios
+    .get(`${URL}/${userID}/view-user-products`)
+    .then((res: any) => {
+      return res.data.data;
+    });
+};
 export const ViewProductOrder = async (userID: string) => {
   return await axios.get(`${URL}/${userID}/view-orders`).then((res: any) => {
     return res.data.data;

@@ -28,7 +28,6 @@ const MakePayment = () => {
       .finally(() => {
         setToggle(false);
       });
-    // console.log(res.data.data.data.authorization_url);
   };
   return (
     <div

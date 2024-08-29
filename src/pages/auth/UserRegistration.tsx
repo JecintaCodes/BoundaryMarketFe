@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { createUser } from "../../api/UserApi";
 import { PulseLoader } from "react-spinners";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const UserRegistration = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -17,6 +17,7 @@ const UserRegistration = () => {
     name: yup.string().required(),
     email: yup.string().required().lowercase(),
     address: yup.string().required(),
+    telNumb: yup.string().required(),
     password: yup.string().required(),
     confirmPassword: yup
       .string()
@@ -73,6 +74,12 @@ const UserRegistration = () => {
           type="email"
           placeholder="email "
           {...register("email")}
+        />
+        <input
+          className="w-[100%] h-[50px] mt-[20px] rounded p-[10px] outline-none placeholder:text-[12px] placeholder:text-[#d1cdcd] bg-transparent border-[2px] text-[12px] "
+          type="text"
+          placeholder="Telephone Number "
+          {...register("telNumb")}
         />
         <input
           className="w-[100%] h-[50px] mt-[20px] rounded p-[10px] outline-none placeholder:text-[12px] placeholder:text-[#d1cdcd] bg-transparent border-[2px] text-[12px] "

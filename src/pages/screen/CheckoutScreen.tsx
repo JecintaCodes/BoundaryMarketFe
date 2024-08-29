@@ -16,14 +16,25 @@ const CheckoutScreen = () => {
   let dispatch = useDispatch();
   let cart = useSelector((state: any) => state.cart);
   let user = useSelector((state: any) => state.user);
-  console.log(cart);
+  // console.log(cart);
+  // const totalAmount = cart.reduce((acc, item) => {
+  //   return acc + item.amount * item.QTY;
+  // }, 0);
+  const totalAmount = cart
+    ?.map((el: any) => {
+      return el.QTY * el.amount;
+    })
+    ?.reduce((a, b) => {
+      return a + b;
+    }, 0);
+
   const makePaymentApiCall = async () => {
     console.log("object");
     setToggle(true);
     await axios
       .post(`http://localhost:2003/api/v1/make-payment`, {
         email: user?.email,
-        amount: 10000,
+        amount: totalAmount,
         // cart ?.reduce((a, b) => {
         //           return a + b;
         //         },)},
@@ -36,7 +47,7 @@ const CheckoutScreen = () => {
         setToggle(false);
       });
   };
-  console.log(makePaymentApiCall);
+
   return (
     <div className="mt-10">
       <div className="w-full flex justify-center mb-8 ">
@@ -140,8 +151,9 @@ const CheckoutScreen = () => {
             }}
           >
             {toggle ? (
-              <div>
+              <div className="flex justify-center items-center gap-1">
                 <FaSpinner />
+                <div>Proceed...</div>
               </div>
             ) : (
               <div>Proceed</div>

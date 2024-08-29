@@ -48,20 +48,6 @@ const UserDashboard = () => {
               </Link>
             </div>
 
-            {/* third */}
-
-            <div className="w-[15%] h-[100px] flex justify-center flex-col items-center bg-[#f9f0f0] rounded hover:cursor-pointer hover:duration-700 hover:transition-all hover:scale-[1.05] small:w-[80px]  mobile:w-[80px] mobilel:w-[100px]   ">
-              <Link to="/user/add-store">
-                <div className="text-[#456104] font-bold text-[17px] small:text-[12px] mobile:text-[13px] mobilel:text-[13px] tablet:text-[13px] ">
-                  <MdStore />
-                </div>
-
-                <div className="text-[15px] font-semibold mt-[10px] text-[#456104] small:text-[10px] mobile:text-[10px] small:mt-[5px] mobile:mt-[5px] mobilel:mt-[5px] mobilel:text-[11px] tablet:text-[12px] tablet:mt-[5px] ">
-                  Creare Store
-                </div>
-              </Link>
-            </div>
-
             {/* fourth */}
             <div className="w-[15%] h-[100px] flex justify-center flex-col items-center bg-[#f9f0f0] rounded hover:cursor-pointer hover:duration-700 hover:transition-all hover:scale-[1.05] small:w-[80px]  mobile:w-[80px] mobilel:w-[100px] p-1  ">
               {/* <Link to={`/${userID}/${storeID}/user/add-pro`}> */}

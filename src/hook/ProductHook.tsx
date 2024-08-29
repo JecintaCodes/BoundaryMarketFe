@@ -1,5 +1,10 @@
 import useSWR from "swr";
-import { readProduct, ViewProductOrder } from "../api/Product";
+import {
+  readOneUserProduct,
+  readProduct,
+  ViewProductOrder,
+} from "../api/Product";
+import { useSelector } from "react-redux";
 
 export const useProduct = (userID: string, storeID: string) => {
   const { data } = useSWR("/get-one-product", readProduct, {
@@ -27,3 +32,22 @@ export const allProductsHooks = () => {
   );
   return { allProduct, isLoading };
 };
+export const oneUserProductHook = () => {
+  const userID = useSelector((state: any) => state?.user);
+  const { data, isLoading } = useSWR(
+    `${userID}/view-user-products`,
+    () => readOneUserProduct(userID!),
+    { refreshInterval: 5000 }
+  );
+  return { data, isLoading };
+};
+// export const oneUserHook = () => {
+//   const userID = useSelector((state: any) => state.user);
+
+//   const { data, isLoading } = useSWR(
+//     `${userID}/get-one-user`,
+//     () => getOneUser(userID!),
+//     { refreshInterval: 5000 }
+//   );
+//   return { data, isLoading };
+// };
