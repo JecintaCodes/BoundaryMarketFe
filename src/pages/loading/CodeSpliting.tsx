@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
-// import ReactLazy from "./LoaderScreen";
-import { BounceLoader } from "react-spinners";
+import ReactLazy from "./LoaderScreen";
 const LoaderScreen = React.lazy(() => import("./LoaderScreen"));
 const CodeSpliting = () => {
   return (

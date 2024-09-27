@@ -1,89 +1,35 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { FaThumbsUp } from "react-icons/fa";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const VerifyPayment = () => {
-  const [toggle, setToggle] = useState<boolean>(false);
   const user = useSelector((state: any) => state?.user);
-  const cart = useSelector((state: any) => state?.cart);
 
   const { search } = useLocation();
-  const totalAmount = cart
-    ?.map((el: any) => {
-      return el.QTY * el.amount;
-    })
-    ?.reduce((a, b) => {
-      return a + b;
-    }, 0);
 
-  // const refID = search.split("reference")[1];
+  const refID = search.split("reference=")[1];
 
-  // const VerifyPaymentApiCall = async () => {
-  //   try {
-  //     const url: string = `http://localhost:2003/api/v1/verify-payment`;
-  //     await axios.post(url, { refNub: refID }).then((res) => {
-  //       if (res.data.data.data.gateway_response === "Successful") {
-  //         const addPayment = {
-  //             reference: refID,
-  //             email:user?.email,
-  //            amount: res.data.data.data.amount,
-  //              status: "Successful",
-  //       };
-  //       await axios.post(url,addPayment).then(()=>{
-  //          console.log("Payment verified and created successfully");
-
-  //       })
-
-  //         }
-  //       },
-
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // const VerifyPaymentApiCall = async () => {
-  //   try {
-  //     const url: string = `http://localhost:2003/apiv1/verify-payment`;
-
-  //     axios.post(url, { refNumb: refID }).then((res) => {
-  //       if (res.data.data.data.gateway_response === "Successful") {
-  //         const addPayment = {
-  //           reference: refID,
-  //           email: user?.email,
-  //           amount: res.data.data.data.amount,
-  //           status: "successful",
-  //         };
-  //         axios.post(url, addPayment).then(() => {
-  //           console.log("Payment verified and created successfully");
-  //         });
-  //       }
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  const refID = search.split("reference")[1];
   const VerifyPaymentApiCall = async () => {
-    try {
-      const url: string = `http://localhost:2003/api/v1/verify-payment`;
-
-      const paymentData = {
-        reference: refID,
+    axios
+      .post("http://localhost:2003/api/v1/verify-payment", {
+        refNumb: refID,
         email: user?.email,
-        amount: totalAmount,
-        status: "Successful",
-      };
-      await axios.post(url, paymentData).then((res) => {
+      })
+      .then((res) => {
+        console.log("return", res);
         if (res.data.data.data.gateway_response === "Successful") {
-          console.log("Payment verified and created successfully");
+          console.log("Payment verified successfully!");
+        } else {
+          console.log(
+            "Payment verification failed:",
+            res.data.data.data.gateway_response
+          );
         }
+      })
+      .catch((error) => {
+        console.error(error);
       });
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   useEffect(() => {

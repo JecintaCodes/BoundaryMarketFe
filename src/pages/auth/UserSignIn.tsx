@@ -18,15 +18,17 @@ const UserSignIn = () => {
     password: yup.string().required(),
   });
 
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, reset } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = handleSubmit(async (res) => {
-    const { email, password } = res;
+  const onSubmit = handleSubmit(async (data: any) => {
     setLoading(true);
-    signInUser({ email, password }).then((res) => {
+    const { email, password } = data;
+    console.log("handle submit", { email, password });
+    signInUser({ email, password }).then((res: any) => {
       dispatch(logInUser(res));
+      reset();
       navigate("/user");
     });
     setLoading(false);
@@ -75,11 +77,11 @@ const UserSignIn = () => {
           }}
         >
           {loading ? (
-            <>
-              <BeatLoader />
-            </>
+            <div>
+              <BeatLoader color="#456104" />
+            </div>
           ) : (
-            "Sign In"
+            <div>Sign In</div>
           )}
         </button>
         <div className="w-[100%] h-[50px] mt-[20px] flex justify-center gap-2 text-[12px] ">

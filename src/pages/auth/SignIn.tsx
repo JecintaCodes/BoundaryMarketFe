@@ -2,11 +2,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BeatLoader } from "react-spinners";
 import { useDispatch } from "react-redux";
 import { signInUser } from "../../api/UserApi";
 import { logInUser } from "../../components/global/redux";
+// import UserHistory from "../user/UserHistory";
 
 const SignIn = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -17,6 +18,12 @@ const SignIn = () => {
     email: yup.string().required(),
     password: yup.string().required(),
   });
+  // const [role, setRole] = useState(null);
+
+  // useEffect(() => {
+  //   const storedRole = localStorage.getItem("role");
+  //   setRole(storedRole);
+  // }, []);
 
   const { register, handleSubmit, reset } = useForm({
     resolver: yupResolver(schema),
@@ -28,8 +35,15 @@ const SignIn = () => {
     console.log("handle submit", { email, password });
     signInUser({ email, password }).then((res: any) => {
       dispatch(logInUser(res));
-      reset();
       navigate("/product");
+      reset();
+      //   if (role === "ADMIN") {
+      //     navigate("/admin");
+      //   } else if (role === "USER") {
+      //     navigate("/user");
+      //   } else if (role === "BUYER") {
+      //     navigate("/product");
+      //   }
     });
     setLoading(false);
   });
@@ -78,11 +92,11 @@ const SignIn = () => {
           }}
         >
           {loading ? (
-            <>
-              <BeatLoader />
-            </>
+            <div>
+              <BeatLoader color="#456104" />
+            </div>
           ) : (
-            "Sign In"
+            <div>Sign In</div>
           )}
         </button>
         <div className="w-[100%] h-[50px] mt-[20px] flex justify-center gap-2 text-[12px] ">

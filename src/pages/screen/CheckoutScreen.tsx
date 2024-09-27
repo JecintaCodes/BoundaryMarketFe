@@ -16,10 +16,7 @@ const CheckoutScreen = () => {
   let dispatch = useDispatch();
   let cart = useSelector((state: any) => state.cart);
   let user = useSelector((state: any) => state.user);
-  // console.log(cart);
-  // const totalAmount = cart.reduce((acc, item) => {
-  //   return acc + item.amount * item.QTY;
-  // }, 0);
+
   const totalAmount = cart
     ?.map((el: any) => {
       return el.QTY * el.amount;
@@ -35,13 +32,11 @@ const CheckoutScreen = () => {
       .post(`http://localhost:2003/api/v1/make-payment`, {
         email: user?.email,
         amount: totalAmount,
-        // cart ?.reduce((a, b) => {
-        //           return a + b;
-        //         },)},
       })
       .then((res: any) => {
         console.log("object", res.data.data);
         window.location.replace(res.data.data.authorization_url);
+        console.log(res);
       })
       .finally(() => {
         setToggle(false);
@@ -51,28 +46,28 @@ const CheckoutScreen = () => {
   return (
     <div className="mt-10">
       <div className="w-full flex justify-center mb-8 ">
-        <div className="w-[95%] border rounded-md p-3">
+        <div className="w-[95%] small:w-[100%] border rounded-md p-3">
           <div className="my-5">Shopping Cart</div>
 
           <hr />
 
           <div>
             {cart?.map((props: any) => (
-              <div className="flex items-center mb-5 ">
+              <div className="flex items-center mb-5 small:w-[100%] ">
                 <img
-                  className="w-[150px] h-[150px] object-cover mr-6"
+                  className="w-[150px] small:w-[100px] h-[150px] object-cover mr-6"
                   src={props?.img}
                   alt="dummy"
                 />
 
-                <div className="w-[300px]">
+                <div className="w-[300px] small:ml-[-20px] small:w-[150px] text-[13px] ">
                   <div>{props?.title}</div>
                   <div>₦{props?.amount}</div>
                 </div>
-                <div className="mr-1">
+                <div className="mr-1 small:mr-2 ">
                   Stock: {props?.QTYinStock - props?.QTY}
                 </div>
-                <div className=" mr-12 flex items-center border ">
+                <div className=" mr-12  flex items-center border ">
                   <div className="mx-4">{props?.QTY}</div>
                   <div>
                     {props?.QTYinStock - props?.QTY > 0 ? (
@@ -103,11 +98,11 @@ const CheckoutScreen = () => {
                   </div>
                 </div>
 
-                <div className="w-[100px] mr-8 font-bold ">
+                <div className="w-[100px] mr-8 font-bold small:hidden mobilel:hidden mobile:hidden  ">
                   ₦{props.amount * props.QTY}
                 </div>
                 <div
-                  className="hover:cursor-pointer"
+                  className="hover:cursor-pointer small:hidden mobilel:hidden mobile:hidden "
                   onClick={() => {
                     dispatch(removeFromCart(props));
                   }}

@@ -143,23 +143,23 @@ const AdminRegistration = () => {
             <div className="flex items-center justify-center gap-1">
               <div
                 id="loader"
-                className="w-[8px] h-[8px] rounded-sm border border-black"
+                className="w-[8px] h-[8px] rounded-sm border border-[#456104]"
               ></div>
               <div
                 id="loader"
-                className="w-[8px] h-[8px] rounded-sm border border-black"
+                className="w-[8px] h-[8px] rounded-sm border border-[#456104]"
               ></div>
               <div
                 id="loader"
-                className="w-[8px] h-[8px] rounded-sm border border-black"
+                className="w-[8px] h-[8px] rounded-sm border border-[#456104]"
               ></div>
               <div
                 id="loader"
-                className="w-[8px] h-[8px] rounded-sm border border-black"
+                className="w-[8px] h-[8px] rounded-sm border border-[#456104]"
               ></div>
             </div>
           ) : (
-            "Sign Up"
+            <div>Sign Up</div>
           )}
         </button>
         <div className="w-[100%] h-[50px] mt-[20px] flex justify-center gap-2 text-[12px] ">

@@ -102,11 +102,11 @@ const Registration = () => {
           }}
         >
           {loading ? (
-            <>
-              <BeatLoader />
-            </>
+            <div>
+              <BeatLoader color="#456104" />
+            </div>
           ) : (
-            "Sign Up"
+            <div>Sign Up</div>
           )}
         </button>
         <div className="w-[100%] h-[50px] mt-[20px] flex justify-center gap-2 text-[12px] ">

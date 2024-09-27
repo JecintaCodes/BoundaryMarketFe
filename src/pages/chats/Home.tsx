@@ -2,7 +2,7 @@
 // import pix from "../../src/assets/man.png";
 import Notify from "../../pages/user/UserNotificationPage";
 import { allUserHook, oneUserHook } from "../../hook/UserHook";
-import DoorDashFavorite from "../LoaderScreen";
+import DoorDashFavorite from "../loading/LoaderScreen";
 
 const Home = () => {
   const { data } = oneUserHook();

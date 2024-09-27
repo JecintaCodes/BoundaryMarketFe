@@ -12,14 +12,14 @@ import { logInUser } from "../../components/global/redux";
 
 const AdminSignIN = () => {
   const dispatch = useDispatch();
-  const tl = gsap.timeline({ repeat: -1 });
-  useGSAP(() => {
-    tl.fromTo(
-      "#loader",
-      { x: 20, opacity: 0 },
-      { opacity: 1, x: 0, stagger: 0.2 }
-    );
-  }, []);
+  // const tl = gsap.timeline({ repeat: -1 });
+  // useGSAP(() => {
+  //   tl.fromTo(
+  //     "#loader",
+  //     { x: 20, opacity: 0 },
+  //     { opacity: 1, x: 0, stagger: 0.2 }
+  //   );
+  // }, []);
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -28,7 +28,7 @@ const AdminSignIN = () => {
     password: yup.string().required(),
   });
 
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, reset } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -38,7 +38,7 @@ const AdminSignIN = () => {
     console.log("handle submit", { email, password });
     signInUser({ email, password }).then((res: any) => {
       dispatch(logInUser(res));
-      // reset();
+      reset();
       navigate("/admin");
     });
     setLoading(false);
@@ -87,11 +87,11 @@ const AdminSignIN = () => {
           }}
         >
           {loading ? (
-            <>
-              <BeatLoader />
-            </>
+            <div>
+              <BeatLoader color="#456104" />
+            </div>
           ) : (
-            "Sign In"
+            <div>Sign In</div>
           )}
         </button>
         <div className="w-[100%] h-[50px] mt-[20px] flex justify-center gap-2 text-[12px] ">
