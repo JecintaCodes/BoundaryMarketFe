@@ -5,6 +5,9 @@ import {
   ViewProductOrder,
 } from "../api/Product";
 import { useSelector } from "react-redux";
+import { getOneUserList } from "../api/UserApi";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export const useProduct = (userID: string, storeID: string) => {
   const { data } = useSWR("/get-one-product", readProduct, {
@@ -42,14 +45,13 @@ export const oneUserProductHook = () => {
   console.log(_id);
   return { data, isLoading };
 };
-// console.log(readOneUserProduct);
-// export const oneUserHook = () => {
-//   const userID = useSelector((state: any) => state.user);
 
-//   const { data, isLoading } = useSWR(
-//     `${userID}/get-one-user`,
-//     () => getOneUser(userID!),
-//     { refreshInterval: 5000 }
-//   );
-//   return { data, isLoading };
-// };
+export const UserListHook = () => {
+  const userID = useSelector((state: any) => state?.user);
+  const { data: userHook, isLoading } = useSWR(
+    `/${userID?._id}/get-list`,
+    () => getOneUserList(userID!),
+    { refreshInterval: 5000 }
+  );
+  return { userHook, isLoading };
+};

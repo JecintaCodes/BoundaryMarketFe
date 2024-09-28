@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const URL: string = "http://localhost:2003/api/v1";
-const URL: string = "https://boundarymarket.onrender.com/api/v1";
+const URL: string = "http://localhost:2003/api/v1";
+// const URL: string = "https://boundarymarket.onrender.com/api/v1";
 
 export const createUser = async (data: any, adminID: any) => {
   try {
@@ -56,6 +56,15 @@ export const signInUser = async (data: any) => {
 export const getOneUser = async (userID: any) => {
   try {
     return await axios.get(`${URL}/${userID}/get-one-user`).then((res: any) => {
+      return res.data.data;
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getOneUserList = async (userID: any) => {
+  try {
+    return await axios.get(`${URL}/${userID}/get-list`).then((res: any) => {
       return res.data.data;
     });
   } catch (error) {

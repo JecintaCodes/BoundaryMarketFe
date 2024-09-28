@@ -41,6 +41,7 @@ import AdminProfileScreen from "../pages/admin/AdminProfileScreen";
 import VerifyPayment from "../pages/payment/VerifyPayment";
 import MakePayment from "../pages/payment/MakePayment";
 import AddList from "../pages/screen/AddList";
+import ListCheckout from "../pages/screen/ListCheckout";
 
 export const mainRoute = createBrowserRouter([
   {
@@ -213,5 +214,9 @@ export const mainRoute = createBrowserRouter([
   {
     path: "/add-list",
     element: <AddList />,
+  },
+  {
+    path: "/list-checkout",
+    element: <ListCheckout />,
   },
 ]);

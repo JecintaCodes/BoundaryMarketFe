@@ -1,66 +1,86 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { createList } from "../../api/Product";
 import { useNavigate } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 import axios from "axios";
 
+interface ListItems {
+  title: string;
+  amount: number;
+}
+
+const initialState: ListItems[] = [];
+
 const AddList = () => {
-  const [listItems, setListItems] = useState([{}]); // Initialize with one item
+  const [listItems, setListItems] = useState<ListItems[]>(initialState);
+  const [newItem, setNewItem] = useState<ListItems>({ title: "", amount: 0 });
   const [loading, setLoading] = useState(false);
   const user = useSelector((state: any) => state?.user);
-  // console.log(user?._id);
   const navigate = useNavigate();
-
+  // const handleAddItem = () => {
+  //   setListItems([...listItems, { title: "", amount: 0 }]);
+  // };
   const handleAddItem = () => {
-    setListItems([...listItems, {}]);
+    setListItems([...listItems, { title: "", amount: 0 }]);
+    if (newItem.title && newItem.amount > 0) {
+      setListItems([...listItems, { ...newItem }]);
+      setNewItem({ title: "", amount: 0 });
+    } else {
+      alert("Please fill in title and amount");
+    }
   };
 
-  const handleRemoveItem = (index) => {
+  const handleRemoveItem = (index: number) => {
     setListItems(listItems.filter((item, i) => i !== index));
   };
 
-  const handleItemChange = (index, field, value) => {
+  const handleItemChange = (
+    index: number,
+    field: string,
+    value: string | number
+  ) => {
     const updatedListItems = [...listItems];
     updatedListItems[index][field] = value;
     setListItems(updatedListItems);
   };
-  interface ListItems {
-    title: string;
-    amount: string;
-  }
+  // console.log(handleItemChange);
 
-  const listItem: ListItems[] = [];
-  const calculateTotal = (data: ListItems[]) => {
-    return data.reduce((acc, item: any) => acc + item.amount, 0);
-  };
+  const handleSubmit = async () => {
+    if (!listItems.length) {
+      alert("Please provide a valid list");
+      return;
+    }
 
-  const handleSubmit = async (data: ListItems[]) => {
-    const url = `localhost:2003/api/v1/${user?._id}/create-list`;
-    console.log(user?._id);
-    const jsonData = JSON.stringify(data);
-
+    setLoading(true);
     try {
-      setLoading(true);
-      const response = await axios.post(url, jsonData);
+      const jsonData = JSON.stringify({ lists: listItems });
+      const url = `http://localhost:2003/api/v1/${user?._id}/create-list`;
+      const response = await axios.post(url, jsonData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       console.log(response);
-      const totalAmount =
-        response.data.length > 0 ? calculateTotal(response.data) : 0;
-      navigate("/check-out", { state: { totalAmount } });
-      console.log(totalAmount);
+
+      // Handle response
+      if (response.status === 201) {
+        const totalAmount = listItems
+          .map((item) => item.amount)
+          .reduce((acc, amount) => acc + amount, 0);
+        console.log(totalAmount);
+        navigate("/list-checkout", { state: { totalAmount } });
+      } else {
+        // Handle error response
+        console.error("Error creating list:", response.data);
+        alert("Error creating list: " + response.data.message);
+      }
     } catch (error) {
       console.error(error);
+      alert("Submission failed: " + error.message);
     } finally {
       setLoading(false);
     }
   };
-  console.log(listItem);
-
-  const handleClick = () => {
-    handleSubmit(listItem);
-    setListItems([]);
-  };
-
   return (
     <div className="w-[100%] h-[100vh] flex justify-center ">
       <div className="w-[90%] mt-[20px] ">
@@ -74,7 +94,7 @@ const AddList = () => {
           {/* up */}
           {/* lists */}
           <div className="w-[50%] small:w-[100%] mobile:w-[100%] mobilel:w-[100%] ">
-            {listItems.map((item: any, index) => (
+            {listItems.map((item: ListItems, index: number) => (
               <div
                 key={index}
                 className="w-[100%] h-[40px] rounded border flex items-center text-[12px] font-semibold mt-[25px] mb-2 "
@@ -85,9 +105,9 @@ const AddList = () => {
                     className="w-[100%] h-[100%] outline-none border-none border-r-[1px] p-1 border-r-[silver]"
                     type="text"
                     placeholder="add item"
-                    value={item?.title}
+                    value={item.title}
                     onChange={(e) =>
-                      handleItemChange(index, "name", e.target.value)
+                      handleItemChange(index, "title", e.target.value)
                     }
                   />
                 </div>
@@ -97,13 +117,12 @@ const AddList = () => {
                     className="w-[100%] h-[100%] border-none outline-none p-1 "
                     type="number"
                     placeholder=" amount"
-                    value={item?.amount}
+                    value={item.amount}
                     onChange={(e) =>
-                      handleItemChange(index, "amount", e.target.value)
+                      handleItemChange(index, "amount", Number(e.target.value))
                     }
                   />
                 </div>
-
                 <div className="w-[10%] h-[100%] text-[8px] font-bold text-[red] flex justify-center items-center  border-l-[1px] hover:cursor-pointer hover:duration-700 border-l-[silver] ">
                   <div onClick={() => handleRemoveItem(index)}>Delete</div>
                 </div>
@@ -113,7 +132,7 @@ const AddList = () => {
             {/* butt */}
             <div className=" w-[100%] flex justify-between items-center text-[11px] font-bold mt-[20px] ">
               <button
-                className="p-2 bg-[#456104] rounded text-[white] hover:duration-700 hover:transition-all hover:scale-[1.05] "
+                className="p-2  bg-[#456104] rounded text-[white] hover:duration-700 hover:transition-all hover:scale-[1.05] "
                 type="button"
                 onClick={handleAddItem}
               >
@@ -122,7 +141,7 @@ const AddList = () => {
               <button
                 className="p-2 hover:duration-700 hover:transition-all hover:scale-[1.05] bg-[#fa9608] rounded text-[white] "
                 type="button"
-                onClick={handleClick}
+                onClick={handleSubmit}
               >
                 {loading ? (
                   <div>
