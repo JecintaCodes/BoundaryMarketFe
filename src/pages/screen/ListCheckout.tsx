@@ -1,73 +1,97 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 import { useSelector } from "react-redux";
-// import { UserListHook } from "../../hook/ProductHook";
-const UserListHook = () => {
-  const [userHook, setUserHook] = useState([]);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const userID = useSelector((state: any) => state.user);
-  useEffect(() => {
-    const fetchUserList = async () => {
-      if (!userID || !userID._id) {
-        console.log("invalid user");
-      }
-      try {
-        const response = await axios.get(
-          `http://localhost:2003/${userID?._id}/get-list`
-        );
-        console.log(response.data); // Inspect API response
-        setUserHook(response.data);
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          setError(error.message);
-        } else {
-          setError("Unexpected error");
-        }
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchUserList();
-  }, []);
-
-  return { userHook, error, isLoading };
-};
+import axios from "axios";
+import { oneUserListHook } from "../../hook/ProductHook";
 
 const ListCheckout = () => {
-  const { userHook, error, isLoading } = UserListHook();
+  const { userHook } = oneUserListHook();
+  const [loading, setLoading] = useState<boolean>(false);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
-  if (!userHook || userHook.length === 0) return <div>No data available</div>;
+  const checkOut = ({ lists }) => {
+    const totalAmount = lists
+      .map((item) => item.amount)
+      .reduce((acc, amount) => acc + amount, 0);
+    return totalAmount;
+  };
 
-  console.log(userHook); // Inspect userHook array
+  // let cart = useSelector((state: any) => state.cart);
+  let user = useSelector((state: any) => state.user);
 
-  const totalAmount = userHook.reduce((acc, item) => acc + item.amount, 0);
+  // const totalAmount = cart
+  //   ?.map((el: any) => {
+  //     return el.QTY * el.amount;
+  //   })
+  //   ?.reduce((a, b) => {
+  //     return a + b;
+  // }, 0);
+
+  const makePaymentApiCall = async () => {
+    console.log("object");
+    setLoading(true);
+    await axios
+      .post(`http://localhost:2003/api/v1/make-payment`, {
+        email: user?.email,
+        amount: checkOut,
+      })
+      .then((res: any) => {
+        console.log("object", res.data.data);
+        window.location.replace(res.data.data.authorization_url);
+        console.log(res);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
   return (
     <div className="container mx-auto p-4 md:p-6 lg:p-8">
       <h1 className="text-3xl font-bold mb-4 md:text-4xl lg:text-5xl">
         Checkout
       </h1>
-      <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row">
-        <div className="w-full md:w-3/4 lg:w-3/4 xl:w-3/4 2xl:w-3/4">
-          {userHook?.map((item, index) => (
-            <div
-              key={index}
-              className="flex justify-between mb-3 md:mb-4 lg:mb-6 xl:mb-8 2xl:mb-10"
-            >
-              <p className="text-lg md:text-xl lg:text-2xl">{item.title}</p>
-              <p className="text-lg md:text-xl lg:text-2xl">${item.amount}</p>
-            </div>
-          ))}
+      <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row ">
+        <div className="w-full md:w-3/4 lg:w-3/4 xl:w-3/4 2xl:w-3/4 ">
+          {userHook &&
+            userHook?.map((props: any) => (
+              <div
+                key={props?._id}
+                className="flex justify-between mb-2 md:mb-4 lg:mb-6 xl:mb-8 2xl:mb-10 border p-1 rounded "
+              >
+                <p className="text-lg md:text-xl lg:text-2xl">{props?.title}</p>
+                <p className="text-lg md:text-xl lg:text-2xl">
+                  ₦{props?.amount}
+                </p>
+              </div>
+            ))}
         </div>
         <div className="w-full md:w-1/4 lg:w-1/4 xl:w-1/4 2xl:w-1/4 md:ml-4 lg:ml-6 xl:ml-8 2xl:ml-10">
           <div className="bg-gray-100 p-4 rounded md:p-6 lg:p-8 xl:p-10 2xl:p-12">
             <p className="text-lg md:text-xl lg:text-2xl">Total:</p>
-            <p className="text-2xl md:text-3xl lg:text-4xl">₦{totalAmount}</p>
-            <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded md:py-4 md:px-6 lg:py-6 lg:px-8 xl:py-8 xl:px-10 2xl:py-10 2xl:px-12">
-              Proceed to Payment
+            <p className="text-2xl md:text-3xl lg:text-4xl">
+              ₦50
+              {/* {lists 
+      ?.map((item) => item.amount)
+      ?.reduce((acc, amount) => acc + amount, 0);
+              } */}
+            </p>
+            {/* // {cart */}
+            {/* //   ?.map((el: any) => { */}
+            {/* //     return el.QTY * el.amount; */}
+            {/* //   }) */}
+            {/* //   ?.reduce((a, b) => { */}
+            {/* //     return a + b; */}
+            {/* //   }, 0)} */}
+            <button
+              className="bg-orange-500 mt-3 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded md:py-4 md:px-6 lg:py-6 lg:px-8 xl:py-8 xl:px-10 2xl:py-10 2xl:px-12"
+              // onClick={makePaymentApiCall}
+            >
+              {loading ? (
+                <div className="flex justify-center items-center">
+                  <FaSpinner /> <div>Proceed to Payment....</div>
+                </div>
+              ) : (
+                <div>Proceed to Payment</div>
+              )}
             </button>
           </div>
         </div>

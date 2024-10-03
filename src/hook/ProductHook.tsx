@@ -46,11 +46,11 @@ export const oneUserProductHook = () => {
   return { data, isLoading };
 };
 
-export const UserListHook = () => {
+export const oneUserListHook = () => {
   const userID = useSelector((state: any) => state?.user);
   const { data: userHook, isLoading } = useSWR(
     `/${userID?._id}/get-list`,
-    () => getOneUserList(userID!),
+    () => getOneUserList(userID),
     { refreshInterval: 5000 }
   );
   return { userHook, isLoading };

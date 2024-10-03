@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 import axios from "axios";
+import { addToList } from "../../components/global/redux";
 
 interface ListItems {
   title: string;
@@ -12,6 +13,7 @@ interface ListItems {
 const initialState: ListItems[] = [];
 
 const AddList = () => {
+  const dispatch = useDispatch();
   const [listItems, setListItems] = useState<ListItems[]>(initialState);
   const [newItem, setNewItem] = useState<ListItems>({ title: "", amount: 0 });
   const [loading, setLoading] = useState(false);
@@ -60,6 +62,10 @@ const AddList = () => {
           "Content-Type": "application/json",
         },
       });
+      dispatch(addToList(response.data));
+      // .then((res)=>{
+      //   dispatch(addToList(res))
+      // })
       console.log(response);
 
       // Handle response
