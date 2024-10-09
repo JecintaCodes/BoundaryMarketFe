@@ -215,8 +215,8 @@ export const mainRoute = createBrowserRouter([
     path: "/add-list",
     element: <AddList />,
   },
-  // {
-  //   path: "/list-checkout",
-  //   element: <ListCheckout />,
-  // },
+  {
+    path: "/list-checkout",
+    element: <ListCheckout />,
+  },
 ]);

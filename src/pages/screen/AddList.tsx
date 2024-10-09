@@ -18,18 +18,19 @@ const AddList = () => {
   const [newItem, setNewItem] = useState<ListItems>({ title: "", amount: 0 });
   const [loading, setLoading] = useState(false);
   const user = useSelector((state: any) => state?.user);
+  console.log(user?._id);
   const navigate = useNavigate();
   // const handleAddItem = () => {
   //   setListItems([...listItems, { title: "", amount: 0 }]);
   // };
   const handleAddItem = () => {
     setListItems([...listItems, { title: "", amount: 0 }]);
-    if (newItem.title && newItem.amount > 0) {
-      setListItems([...listItems, { ...newItem }]);
-      setNewItem({ title: "", amount: 0 });
-    } else {
-      alert("Please fill in title and amount");
-    }
+    // if (newItem.title && newItem.amount > 0) {
+    //   setListItems([...listItems, { ...newItem }]);
+    //   setNewItem({ title: "", amount: 0 });
+    // } else {
+    //   alert("Please fill in title and amount");
+    // }
   };
 
   const handleRemoveItem = (index: number) => {
@@ -52,7 +53,6 @@ const AddList = () => {
       alert("Please provide a valid list");
       return;
     }
-
     setLoading(true);
     try {
       const jsonData = JSON.stringify({ lists: listItems });

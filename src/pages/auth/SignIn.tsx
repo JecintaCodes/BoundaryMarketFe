@@ -35,19 +35,11 @@ const SignIn = () => {
     console.log("handle submit", { email, password });
     signInUser({ email, password }).then((res: any) => {
       dispatch(logInUser(res));
-      navigate("/product");
       reset();
-      //   if (role === "ADMIN") {
-      //     navigate("/admin");
-      //   } else if (role === "USER") {
-      //     navigate("/user");
-      //   } else if (role === "BUYER") {
-      //     navigate("/product");
-      //   }
+      navigate("/product");
     });
     setLoading(false);
   });
-  // console.log(loading);
 
   return (
     <form
