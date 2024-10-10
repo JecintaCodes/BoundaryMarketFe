@@ -30,8 +30,8 @@ const CheckoutScreen = () => {
     setToggle(true);
     await axios
       .post(`https://boundarymarket.onrender.com/api/v1/make-payment`, {
-        // .post(`http://localhost:2003/api/v1/make-payment`, {
-        // email: user?.email,
+      // .post(`http://localhost:2003/api/v1/make-payment`, {
+        email: user?.email,
         amount: totalAmount,
       })
       .then((res: any) => {
