@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const initialState = {
-  user: [],
+  // boundarymarket: {
+  user: {},
   toggle: false,
   cart: [],
-  list: [],
+  list: [], // Verify list exists
+  // },
 };
 
 const redux = createSlice({
@@ -67,19 +68,32 @@ const redux = createSlice({
     emptyList: (state: any) => {
       state.list = [];
     },
-
     addToList: (state, { payload }) => {
       const existingItemIndex = state.list.findIndex(
-        (item) => item._id === payload._id
+        (item) => item.title === payload.title
       );
 
       if (existingItemIndex >= 0) {
         // Update amount of existing item
-        state.list[existingItemIndex].amount += payload.amount;
+        return {
+          ...state,
+          list: state.list.map((item, index) =>
+            index === existingItemIndex
+              ? { ...item, amount: item.amount + payload.amount }
+              : item
+          ),
+        };
       } else {
         // Add new item to list
-        state.list.push({ ...payload });
+        return { ...state, list: [...state.list, payload] };
       }
+    },
+    // createAddList: (state, { payload }) => {
+    //   console.log("Creating list:", payload);
+    //   return { ...state, list: payload.list };
+    // },
+    createAddList: (state, { payload }) => {
+      state.list = payload; // Verify this line
     },
     removeFromList: (state: any, { payload }) => {
       state.list = state.list.filter((el: any) => el._id !== payload._id);
@@ -96,6 +110,7 @@ export const {
   removeQTYfromCart,
   addToList,
   removeFromList,
+  createAddList,
   emptyList,
 } = redux.actions;
 

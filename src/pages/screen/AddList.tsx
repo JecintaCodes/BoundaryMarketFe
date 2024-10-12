@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 import axios from "axios";
-import { addToList } from "../../components/global/redux";
+import { createAddList } from "../../components/global/redux";
 
 interface ListItems {
   title: string;
@@ -20,9 +20,7 @@ const AddList = () => {
   const user = useSelector((state: any) => state?.user);
   console.log(user?._id);
   const navigate = useNavigate();
-  // const handleAddItem = () => {
-  //   setListItems([...listItems, { title: "", amount: 0 }]);
-  // };
+
   const handleAddItem = () => {
     setListItems([...listItems, { title: "", amount: 0 }]);
     // if (newItem.title && newItem.amount > 0) {
@@ -62,7 +60,7 @@ const AddList = () => {
           "Content-Type": "application/json",
         },
       });
-      dispatch(addToList(response.data));
+      dispatch(createAddList(response.data));
       // .then((res)=>{
       //   dispatch(addToList(res))
       // })

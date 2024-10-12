@@ -32,16 +32,20 @@ const AdminSignIN = () => {
     resolver: yupResolver(schema),
   });
 
-  const onhandleSubmit = handleSubmit(async (data: any) => {
-    setLoading(true);
-    const { email, password } = data;
-    console.log("handle submit", { email, password });
-    signInUser({ email, password }).then((res: any) => {
+  const onHandleSubmission = handleSubmit(async (data: any) => {
+    try {
+      setLoading(true);
+      const { email, password } = data;
+      console.log("handle submit", { email, password });
+      const res = await signInUser({ email, password });
       dispatch(logInUser(res));
       reset();
-      navigate("/admin");
-    });
-    setLoading(false);
+      navigate("/product");
+    } catch (error) {
+      console.error(error); // Handle error
+    } finally {
+      setLoading(false);
+    }
   });
 
   return (
@@ -55,7 +59,7 @@ const AdminSignIN = () => {
       }}
     >
       <form
-        onSubmit={onhandleSubmit}
+        onSubmit={onHandleSubmission}
         className="w-[350px] small:w-[70%] mobile:w-[70%] p-[20px]  overflow-hidden rounded bg-[white] min-h-[300px]  "
       >
         <div className="text-center font-semibold text-[16px] text-[#b5b1b1] ">

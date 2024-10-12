@@ -29,18 +29,32 @@ const SignIn = () => {
     resolver: yupResolver(schema),
   });
 
+  // const onHandleSubmission = handleSubmit(async (data: any) => {
+  //   setLoading(true);
+  //   const { email, password } = data;
+  //   console.log("handle submit", { email, password });
+  //   signInUser({ email, password }).then((res: any) => {
+  //     dispatch(logInUser(res));
+  //     reset();
+  //     navigate("/product");
+  //   });
+  //   setLoading(false);
+  // });
   const onHandleSubmission = handleSubmit(async (data: any) => {
-    setLoading(true);
-    const { email, password } = data;
-    console.log("handle submit", { email, password });
-    signInUser({ email, password }).then((res: any) => {
+    try {
+      setLoading(true);
+      const { email, password } = data;
+      console.log("handle submit", { email, password });
+      const res = await signInUser({ email, password });
       dispatch(logInUser(res));
       reset();
       navigate("/product");
-    });
-    setLoading(false);
+    } catch (error) {
+      console.error(error); // Handle error
+    } finally {
+      setLoading(false);
+    }
   });
-
   return (
     <form
       onSubmit={onHandleSubmission}
