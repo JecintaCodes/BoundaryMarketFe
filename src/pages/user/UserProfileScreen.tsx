@@ -4,6 +4,7 @@ import {
   AiOutlinePhone,
   AiOutlineMail,
 } from "react-icons/ai";
+import bm from "../../assets/bmlogo.jpg";
 import { useSelector } from "react-redux";
 const UserProfileScreen = () => {
   const user = useSelector((state: any) => state?.user);
@@ -15,7 +16,8 @@ const UserProfileScreen = () => {
           <Link to="/user/profile">
             <img
               className="w-[130px] h-[150px] rounded-[50%] object-cover small:w-[80px] small:h-[100px] mobile:w-[80px] mobile:h-[100px] hover:cursor-pointer hover:scale-[1.05] transition-all duration-700 "
-              src=" https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg"
+              src={user?.image}
+              alt={bm}
             />
           </Link>
           <div className="font-bold text-[12px] mt-[20px] hover:text-[#18fb18a9] transition-all hover:cursor-pointer ">

@@ -40,7 +40,7 @@ const AdminSignIN = () => {
       const res = await signInUser({ email, password });
       dispatch(logInUser(res));
       reset();
-      navigate("/product");
+      navigate("/admin");
     } catch (error) {
       console.error(error); // Handle error
     } finally {

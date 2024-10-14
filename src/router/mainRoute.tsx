@@ -3,16 +3,14 @@ import LandingPage from "../pages/LandingPage";
 import Registration from "../pages/auth/Registration";
 import SignIn from "../pages/auth/SignIn";
 import AddProduct from "../pages/screen/AddProduct";
-import AddComp from "../pages/screen/AddComp";
 import CheckoutScreen from "../pages/screen/CheckoutScreen";
 import UserRegistration from "../pages/auth/UserRegistration";
 import AdminRegistration from "../pages/auth/AdminRegistration";
 import AdminSignIN from "../pages/auth/AdminSignIN";
 import UserSignIn from "../pages/auth/UserSignIn";
 import AdminLayout from "../pages/admin/AdminLayout";
-import AdminDataBase from "../pages/admin/DataBase";
+import AdminDataBase from "../pages/admin/AdminDataBase";
 import AdminProfile from "../pages/admin/AdminProfile";
-import Layout from "../components/common/Layout";
 import Order from "../pages/admin/Order";
 import HistroyPage from "../pages/admin/HistroyPage";
 import UserDashboard from "../pages/user/UserDashboard";
@@ -23,17 +21,15 @@ import UserCalender from "../pages/user/UserCalender";
 import UserHistory from "../pages/user/UserHistory";
 import UserOrders from "../pages/user/UserOrders";
 import AdminNotification from "../pages/admin/AdminNotification";
-import Shops from "../pages/admin/Shops";
-// import Store from "../pages/screen/Store";
 import Product from "../pages/user/Product";
 import CalenderPage from "../pages/admin/CalenderPage";
-import BuyerLayout from "../pages/buyer/BuyerLayout";
-import BuyerHistory from "../pages/buyer/BuyerHistroy";
-import BuyerCalender from "../pages/buyer/BuyerCalender";
-import BuyerChating from "../pages/buyer/BuyerChating";
-import BuyerDashBoard from "../pages/buyer/BuyerDashBoard";
-import BuyerProfile from "../pages/buyer/BuyerProfile";
-import DataBase from "../pages/admin/DataBase";
+// import BuyerLayout from "../pages/buyer/BuyerLayout";
+// import BuyerHistory from "../pages/buyer/BuyerHistroy";
+// import BuyerCalender from "../pages/buyer/BuyerCalender";
+// import BuyerChating from "../pages/buyer/BuyerChating";
+// import BuyerDashBoard from "../pages/buyer/BuyerDashBoard";
+// import BuyerProfile from "../pages/buyer/BuyerProfile";
+// import DataBase from "../pages/admin/DataBase";
 import AddStore from "../pages/screen/AddStore";
 import UserProfileScreen from "../pages/user/UserProfileScreen";
 import UserStore from "../pages/user/UserStore";
@@ -96,10 +92,6 @@ export const mainRoute = createBrowserRouter([
       },
       {
         path: "/admin/database",
-        element: <DataBase />,
-      },
-      {
-        path: "/admin/database/ad",
         element: <AdminDataBase />,
       },
       {
@@ -113,10 +105,6 @@ export const mainRoute = createBrowserRouter([
       {
         path: "/admin/profiles",
         element: <AdminProfileScreen />,
-      },
-      {
-        path: "/admin/shop",
-        element: <Shops />,
       },
       {
         path: "/admin/orders",

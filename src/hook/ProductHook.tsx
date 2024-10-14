@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import {
   readOneUserProduct,
+  readOrders,
   readProduct,
   ViewProductOrder,
 } from "../api/Product";
@@ -18,13 +19,23 @@ export const useProduct = (userID: string, storeID: string) => {
 };
 
 export const useProductOrder = (userID: string) => {
-  const { data } = useSWR(`/${userID}/get-one-product`, ViewProductOrder, {
-    refreshInterval: 1000,
-  });
+  const { data: oneUserOrder } = useSWR(
+    `/${userID}/get-one-product`,
+    ViewProductOrder,
+    {
+      refreshInterval: 1000,
+    }
+  );
 
-  return { data, userID };
+  return { oneUserOrder, userID };
 };
 
+export const allOrdersHooks = () => {
+  const { data: allOrder, isLoading } = useSWR(`get-all-product`, readOrders, {
+    refreshInterval: 5000,
+  });
+  return { allOrder, isLoading };
+};
 export const allProductsHooks = () => {
   const { data: allProduct, isLoading } = useSWR(
     `get-all-product`,

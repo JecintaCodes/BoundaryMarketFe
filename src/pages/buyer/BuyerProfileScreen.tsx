@@ -5,6 +5,7 @@ import {
   AiOutlineMail,
 } from "react-icons/ai";
 import { useSelector } from "react-redux";
+import bm from "../../assets/bmlogo.jpg";
 
 const BuyerProfileScreen = () => {
   const data = useSelector((state: any) => state?.myBuyer);
@@ -16,7 +17,7 @@ const BuyerProfileScreen = () => {
           <img
             className="w-[130px] h-[150px] border rounded-[50%] object-cover small:w-9px] small:h-[100px] mobile:w-[80px] mobile:h-[100px] hover:cursor-pointer hover:scale-[1.05] transition-all duration-700 "
             src={data?.image}
-            alt="pinimg"
+            alt={bm}
           />
 
           <div className="font-bold text-[12px] mt-[20px] hover:text-[#456104] transition-all hover:cursor-pointer ">

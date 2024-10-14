@@ -5,7 +5,7 @@ import {
 } from "react-icons/ai";
 import { useSelector } from "react-redux";
 // import { oneAdminHooks } from "../../hook/AdminHook"
-
+import bm from "../../assets/bmlogo.jpg";
 const AdminHeader = () => {
   // const {data} = oneAdminHooks();
   const data = useSelector((state: any) => state?.myAdmin);
@@ -44,6 +44,7 @@ const AdminHeader = () => {
             <AiOutlineMenu />
           </div>
         </div>
+        e
         <div className="flex justify-center items-center gap-[20px] small:hidden mobile:hidden mobilel:hidden ">
           <div className="relative text-[#456104] ">
             <AiOutlineBell className="hover:cursor-pointer animate-bounce " />
@@ -55,8 +56,8 @@ const AdminHeader = () => {
             <div className="w-[30px] h-[30px] rounded-[50%] ">
               <img
                 className="w-[100%] h-[100%] rounded-[50%]  hover:cursor-pointer hover:scale-[1.05] transition-all duration-700  "
-                src="https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg"
-                alt="ping"
+                src={bm}
+                alt={bm}
               />
             </div>
             <div className="text-[12px] font-bold hover:cursor-pointer text-[#456104] ">

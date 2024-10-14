@@ -22,13 +22,14 @@ const ListCheckout = () => {
     setLoading(true);
     try {
       const totalAmount = calculateTotalAmount();
-      const response = await axios
-        // .post(`https://boundarymarket.onrender.com/api/v1/make-payment`,
-        // {
-        .post(`http://localhost:2003/api/v1/make-payment`, {
+      const response = await axios.post(
+        `https://boundarymarket.onrender.com/api/v1/make-payment`,
+        {
+          // .post(`http://localhost:2003/api/v1/make-payment`, {
           email: user?.email,
           amount: totalAmount.toString(),
-        });
+        }
+      );
       window.location.replace(response.data.data.authorization_url);
     } catch (error) {
       console.error(error);

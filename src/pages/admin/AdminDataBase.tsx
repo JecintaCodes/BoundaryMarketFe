@@ -1,48 +1,100 @@
-import { useSelector } from "react-redux";
+// Import necessary dependencies
 import { allUserHook } from "../../hook/UserHook";
+import bm from "../../assets/bmlogo.jpg";
+import { Link } from "react-router-dom";
 
+// Define the AdminDataBase component
 const AdminDataBase = () => {
-  const { alluser } = allUserHook();
-  // const user = useSelector((state:any)=>state?.user)
+  // Use the allUserHook to fetch user data
+  const { allUser } = allUserHook();
 
+  // Render the component
   return (
-    <div className="w-[500px] h-[100%] small:w-[100%] mobile:w-[100%] mt-[30px] mobile:flex mobile:justify-center small:flex small:justify-center ">
-      {alluser &&
-        alluser?.map((props: any) => (
-          <div className="flex gap-[15px] small:w-[100%] mobile:w-[90%] ">
-            {/* name */}
-            <div className="  w-[220px] overflow-hidden mobile:w-[300px] small:w-[300px] ">
-              {/* <div className=" text-[12px] font-bold mobile:text-[10px] small:text-[10px] ">Name</div> */}
-              <div className="mt-[30px] h-[50px] overflow-hidden flex gap-[10px] items-end ">
-                <img
-                  className="w-[35px] h-[35px] rounded-[50%] object-cover hover:cursor-pointer transition-all hover:scale-[1.05] duration-700 "
-                  src="https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg"
-                  alt="pinimg"
-                />
-                <div className="text-[10px] font-bold hover:text-[#18fb18a9] hover:cursor-pointer small:text-[8px] mobile:text-[8px] ">
-                  {props?.name}
+    <table className="w-full table-auto text-left border-separate border-2 border-silver md:border-3 lg:border-4">
+      <thead>
+        <tr className="font-bold h-[35px] text-[12px] md:text-[12px] lg:text-[14px]">
+          <th className="overflow-hidden px-4 py-2 border-b-2 border-gray-200 md:w-[350px] bg-red-100 lg:w-[400px] xl:w-[450px]">
+            Name
+          </th>
+          <th className="overflow-hidden px-4 py-2 border-b-2 border-gray-200 md:w-[450px] lg:w-[500px] bg-[orange] xl:w-[550px]">
+            Email
+          </th>
+          <th className="overflow-hidden px-4 py-2 border-b-2 border-gray-200 md:w-[150px] lg:w-[200px] bg-pink-100 xl:w-[250px]">
+            AccNumb
+          </th>
+          <th className="overflow-hidden px-4 py-2 border-b-2 border-gray-200 md:w-[150px] lg:w-[200px] bg-orange-200 xl:w-[250px]">
+            Telephone
+          </th>
+          <th className="overflow-hidden px-4 py-2 border-b-2 border-gray-200 md:w-[200px] lg:w-[300px] xl:w-[350px] bg-[green]">
+            Address
+          </th>
+          <th className="overflow-hidden px-4 py-2 border-b-2 border-gray-200 md:w-[150px] lg:w-[200px] xl:w-[250px] bg-orange-100 ">
+            Role
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {allUser &&
+          allUser.length > 0 &&
+          allUser.map((props: any) => (
+            <tr
+              className="font-medium border-b-[1px] md:border-b-2 lg:border-b-3 h-[80px] md:h-[100px] lg:h-[120px]"
+              key={props?._id}
+            >
+              <td className="overflow-hidden md:w-[350px] lg:w-[400px] xl:w-[450px]  bg-red-100">
+                <div className="flex gap-1 items-end">
+                  {/* <Link to=""> */}
+                  <img
+                    className="w-[35px] h-[35px] rounded-[50%] object-cover hover:cursor-pointer transition-all hover:scale-[1.05] duration-700"
+                    src={bm}
+                    alt={bm}
+                  />
+                  {/* </Link> */}
+                  <div className="text-[10px] md:text-[8px] lg:text-[11px] font-bold hover:text-[#18fb18a9] hover:cursor-pointer">
+                    {props?.name}
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="  w-[200px] overflow-hidden mobile:w-[400px] small:w-[400px] ">
-              {/* <div className=" text-[12px] font-bold  mobile:text-[10px] small:text-[10px]  ">Email</div> */}
-              <div className="mt-[30px] h-[50px] overflow-hidden flex items-end  ">
-                <div className="text-[10px] font-bold hover:text-[#18fb18a9] hover:cursor-pointer small:text-[8px] mobile:text-[8px] ">
-                  {props?.email}
+              </td>
+              <td className="overflow-hidden md:w-[450px] lg:w-[500px] xl:w-[550px] bg-[orange] ">
+                <div className="flex items-end">
+                  <div className="text-[12px] md:text-lg lg:text-[13px] font-bold hover:text-[#18fb18a9] hover:cursor-pointer">
+                    {props?.email}
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="  w-[100px] overflow-hidden mobile:w-[80px] small:w-[80px] ">
-              {/* <div className=" text-[12px] font-bold  mobile:text-[10px] small:text-[10px] ">Role</div> */}
-              <div className="mt-[30px] h-[50px] overflow-hidden  flex items-end   ">
-                <div className="text-[10px] font-bold hover:text-[#18fb18a9] hover:cursor-pointer small:text-[8px] mobile:text-[8px]   ">
-                  {props?.role}
+              </td>
+              <td className="overflow-hidden md:w-[150px] lg:w-[200px] xl:w-[250px] bg-pink-200 ">
+                <div className="flex items-end">
+                  <div className="text-[12px] md:text-[12px] lg:text-[13px] font-bold hover:text-[#18fb18a9] hover:cursor-pointer">
+                    {props?.accountNumb}
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        ))}
-    </div>
+              </td>
+              <td className="overflow-hidden md:w-[150px] lg:w-[200px] xl:w-[250px] bg-orange-200 ">
+                <div className="flex items-end">
+                  <div className="text-[12px] md:text-[12px] lg:text-[13px] font-bold hover:text-[#18fb18a9] hover:cursor-pointer">
+                    {props?.telNumb}
+                  </div>
+                </div>
+              </td>
+              <td className="overflow-hidden md:w-[200px] bg-[green] lg:w-[300px] xl:w-[350px]">
+                <div className="flex items-end">
+                  <div className="text-[12px] md:text-[12px] lg:text-[13px] font-bold hover:text-[#18fb18a9]  hover:cursor-pointer">
+                    {props?.address}
+                  </div>
+                </div>
+              </td>
+
+              <td className="overflow-hidden md:w-[150px] bg-orange-100 lg:w">
+                <div className="flex items-end">
+                  <div className="text-[12px] font-bold hover:text-[#18fb18a9] hover:cursor-pointer">
+                    {props?.role}
+                  </div>
+                </div>
+              </td>
+            </tr>
+          ))}
+      </tbody>
+    </table>
   );
 };
 

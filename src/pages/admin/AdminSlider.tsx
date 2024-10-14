@@ -58,12 +58,12 @@ const AdminSlider = () => {
               </div>
             </Link>
 
-            <Link to="/admin/histroys">
+            {/* <Link to="/admin/histroys">
               <div className="w-[100%] h-[30px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#456104] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
                 <AiOutlineRadiusSetting />
                 <div>Histroy</div>
               </div>
-            </Link>
+            </Link> */}
             <Link to="/user-sign-up">
               <div className="w-[100%] h-[30px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#456104] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
                 <CgProfile />

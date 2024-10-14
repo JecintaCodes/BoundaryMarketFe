@@ -17,6 +17,11 @@ export const purchaseProduct = async (data: any, userID: string, productID) => {
     });
 };
 
+export const readOrders = async () => {
+  return await axios.get(`${URL}/get-all-order`).then((res: any) => {
+    return res.data.data;
+  });
+};
 export const readProduct = async () => {
   return await axios.get(`${URL}/get-all-product`).then((res: any) => {
     return res.data.data;
