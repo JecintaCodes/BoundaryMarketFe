@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import bm from "../../assets/bmlogo.jpg";
 
 const BuyerProfileScreen = () => {
-  const data = useSelector((state: any) => state?.myBuyer);
+  const data = useSelector((state: any) => state?.user);
 
   return (
     <div className="w-[90%] mobilel:w-[90%] rounded-[10px] small:w-[90%] mobile:w-[90%] h-[100vh] bg-[white] flex justify-center overflow-hidden ">
@@ -16,7 +16,7 @@ const BuyerProfileScreen = () => {
         <div className="mt-[10px] w-[100%] flex justify-center flex-col items-center ">
           <img
             className="w-[130px] h-[150px] border rounded-[50%] object-cover small:w-9px] small:h-[100px] mobile:w-[80px] mobile:h-[100px] hover:cursor-pointer hover:scale-[1.05] transition-all duration-700 "
-            src={data?.image}
+            src={bm}
             alt={bm}
           />
 
@@ -67,17 +67,16 @@ const BuyerProfileScreen = () => {
           <div className="flex gap-[6px] items-center tablet:mt-[20px] ">
             <img
               className="w-[30px] h-[30px] rounded-[50%] object-cover hover:cursor-pointer hover:scale-[1.05] duration-700 "
-              src="https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg"
+              src={bm}
             />
             <img
               className="w-[30px] h-[30px] rounded-[50%] object-cover hover:cursor-pointer hover:scale-[1.05] duration-700 "
-              src="https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg"
+              src={bm}
               alt="pinimg"
             />
             <img
               className="w-[30px] h-[30px] rounded-[50%] object-cover hover:cursor-pointer hover:scale-[1.05] duration-700 "
-              src="https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg"
-              alt="pinimg"
+              src={bm}
             />
           </div>
         </div>

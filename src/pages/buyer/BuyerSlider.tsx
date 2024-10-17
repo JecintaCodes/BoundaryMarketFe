@@ -38,15 +38,15 @@ const BuyerSlider = () => {
               </div>
             </Link>
 
-            <Link to="/buyer/message">
-              <div className="w-[100%] h-[50px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#18fb18a9] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] relative mt-[20px] ">
-                <AiOutlineMessage />
-                <div>Messenger</div>
-                <div className="flex items-center justify-center rounded-full  text-white text-[11px] w-[25px] h-[25px] absolute top-1 right-2 animate-ping bg-red-500 ">
-                  0
-                </div>
+            {/* <Link to="/buyer/message"> */}
+            <div className="w-[100%] h-[50px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#18fb18a9] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] relative mt-[20px] ">
+              <AiOutlineMessage />
+              <div>Messenger</div>
+              <div className="flex items-center justify-center rounded-full  text-white text-[11px] w-[25px] h-[25px] absolute top-1 right-2 animate-ping bg-red-500 ">
+                0
               </div>
-            </Link>
+            </div>
+            {/* </Link> */}
 
             <Link to="/buyer/calender">
               <div className="w-[100%] h-[50px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#18fb18a9] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
@@ -61,18 +61,18 @@ const BuyerSlider = () => {
                 <div>Histroy</div>
               </div>
             </Link>
-            <Link to="/store">
+            <Link to="/product">
               <div className="w-[100%] h-[50px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#18fb18a9] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
                 <AiOutlineRadiusSetting />
-                <div>Stores</div>
+                <div>Products</div>
               </div>
             </Link>
-            <Link to="">
-              <div className="w-[100%] h-[50px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#18fb18a9] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
-                <AiOutlineRadiusSetting />
-                <div>settings</div>
-              </div>
-            </Link>
+            {/* <Link to=""> */}
+            <div className="w-[100%] h-[50px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#18fb18a9] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
+              <AiOutlineRadiusSetting />
+              <div>settings</div>
+            </div>
+            {/* </Link> */}
             <div className="w-[100%] h-[50px] flex items-center gap-[10px] text-[15px] text-[silver] p-2 hover:text-[#18fb18a9] transition-all hover:cursor-pointer hover:rounded-[10px] hover:bg-[#d8d7d7] mt-[20px] ">
               <AiOutlineRadiusSetting />
               <div onClick={onHandleLogOut}>Logout</div>

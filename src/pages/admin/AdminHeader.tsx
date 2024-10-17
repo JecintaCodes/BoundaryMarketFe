@@ -44,7 +44,7 @@ const AdminHeader = () => {
             <AiOutlineMenu />
           </div>
         </div>
-        e
+
         <div className="flex justify-center items-center gap-[20px] small:hidden mobile:hidden mobilel:hidden ">
           <div className="relative text-[#456104] ">
             <AiOutlineBell className="hover:cursor-pointer animate-bounce " />

@@ -6,11 +6,11 @@ import { MdPerson } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { allUserHook } from "../../hook/UserHook";
+import OrderChat from "../chart/OrderChart";
 
-const AdminDashboard = () => {
+const AdminDash = () => {
   const user = useSelector((state: any) => state?.user);
   // const [allUser] = allUserHook()
-
   return (
     <div className="w-[100%] h-[100%]   ">
       <div className="w-[100%] h-[100%] flex justify-center ">
@@ -20,7 +20,7 @@ const AdminDashboard = () => {
             Dashboard{" "}
           </div>
           {/* card */}
-          <div className="w-[100%] mt-[40px] flex gap-[30px] small:gap-[20px] mobile:gap-[35px] flex-wrap  ">
+          <div className="w-[100%] mt-[40px] flex gap-[30px] small:gap-[20px] mobile:gap-[35px] small:flex-wrap flex-wrap  ">
             {/* first */}
 
             <div className="w-[15%] h-[100px] flex justify-center flex-col items-center bg-[#f9f0f0] rounded hover:cursor-pointer hover:duration-700 hover:transition-all hover:scale-[1.05] small:w-[80px]  mobile:w-[80px] mobilel:w-[100px]   ">
@@ -171,6 +171,24 @@ const AdminDashboard = () => {
           </div>
           {/* end card */}
         </div>
+      </div>
+      {/* second component chart */}
+
+      {/*end second component chart */}
+    </div>
+  );
+};
+
+const AdminDashboard = () => {
+  return (
+    <div className="w-[100%] flex justify-center h-[100%">
+      <div className="w-[90%]">
+        <div>
+          <AdminDash />
+        </div>
+        {/* <div className="mt-[20px]">
+          <OrderChat />
+        </div> */}
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ const UserProfileScreen = () => {
           <Link to="/user/profile">
             <img
               className="w-[130px] h-[150px] rounded-[50%] object-cover small:w-[80px] small:h-[100px] mobile:w-[80px] mobile:h-[100px] hover:cursor-pointer hover:scale-[1.05] transition-all duration-700 "
-              src={user?.image}
+              src={bm}
               alt={bm}
             />
           </Link>
@@ -49,11 +49,11 @@ const UserProfileScreen = () => {
         <div className="w-[100%] mt-[30px] tablet:mt-[50px]  flex justify-between items-center ">
           <div>
             <div className="text-[13px] font-bold"> Name</div>
-            <div className="text-[12px]">Crystal Store</div>
+            <div className="text-[12px]">{user?.name}</div>
           </div>
           <div>
             <div className="text-[13px] font-bold"> Email</div>
-            <div className="text-[12px]">crystals@gmail.comtore</div>
+            <div className="text-[12px]">User?.email</div>
           </div>
         </div>
         <div className="w-[100%] mt-[10px]  flex justify-between items-center ">
@@ -63,7 +63,7 @@ const UserProfileScreen = () => {
           </div>
           <div>
             <div className="text-[13px] font-bold">Store Email</div>
-            <div className="text-[12px]">crystals@gmail.comtore</div>
+            <div className="text-[12px]">{user?.email}</div>
           </div>
         </div>
         <div className="w-[100%] h-[70px] mt-[20px] tablet:mt-[35px] ">
@@ -71,17 +71,17 @@ const UserProfileScreen = () => {
           <div className="flex gap-[6px] items-center tablet:mt-[20px] ">
             <img
               className="w-[30px] h-[30px] rounded-[50%] object-cover hover:cursor-pointer hover:scale-[1.05] duration-700 "
-              src="https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg"
+              src={bm}
               alt="pinimg"
             />
             <img
               className="w-[30px] h-[30px] rounded-[50%] object-cover hover:cursor-pointer hover:scale-[1.05] duration-700 "
-              src="https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg"
+              src={bm}
               alt="pinimg"
             />
             <img
               className="w-[30px] h-[30px] rounded-[50%] object-cover hover:cursor-pointer hover:scale-[1.05] duration-700 "
-              src="https://i.pinimg.com/originals/f7/e9/87/f7e987b4ca06764cc3b834689da56502.jpg"
+              src={bm}
               alt="pinimg"
             />
           </div>

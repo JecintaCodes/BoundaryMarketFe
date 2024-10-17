@@ -29,10 +29,13 @@ const RealOrder = () => {
             className="bg-white  mt-[15px] shadow-md rounded-md p-4 m-4 w-[100%] small:w-[100%] mobile:-[100%] mobilel:w-[100%]"
           >
             <h2 className="text-lg font-bold">Order #{order?._id}</h2>
-            <p className="text-gray-600  mt-[15px]">
+            <p className="text-gray-600 font-bold  mt-[15px]">
               Product Owner: {order?.productOwner}
             </p>
-            {/* <p className="text-gray-600  mt-[15px]">
+            <p className="text-gray-600  mt-[15px]">
+              Customer Code: {order?.customerCode}
+            </p>
+            <p className="text-gray-600  mt-[15px]">
               QtyOrdered: {order?.QTYOrder}
             </p>
             <p className="text-gray-600  mt-[15px]">
@@ -40,7 +43,7 @@ const RealOrder = () => {
             </p>
             <p className="text-gray-600  mt-[15px]">
               PhoneNumber: {order?.phoneNumb}
-            </p> */}
+            </p>
             <p className="text-gray-600  mt-[15px]">Date: {formattedDate}</p>
             <p className="text-gray-600  mt-[15px]">Time: {time} </p>
             <p className="text-gray-600 mt-[15px] ">
@@ -64,7 +67,7 @@ const RealOrder = () => {
             <p className="text-gray-600  mt-[15px]">
               Total: ₦{order?.amountPaid}
             </p>
-            <div className="flex justify-end">
+            {/* <div className="flex justify-end">
               <Link to="/admin/histroys">
                 <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 sm:py-4 md:py-6 lg:py-8 xl:py-10 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
                   View
@@ -73,7 +76,7 @@ const RealOrder = () => {
               <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 sm:py-4 md:py-6 lg:py-8 xl:py-10 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
                 Edit
               </button>
-            </div>
+            </div> */}
           </div>
         ))}
     </div>
@@ -125,14 +128,14 @@ const OrderScreen = () => {
         </thead>
         <tbody>{/* Orders data will be rendered here */}</tbody>
       </table>
-      <div className="flex justify-end mt-4">
+      {/* <div className="flex justify-end mt-4">
         <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-l sm:py-1 sm:px-2 md:py-2 md:px-4 lg:py-3 lg:px-6 xl:py-4 xl:px-8">
           Previous
         </button>
         <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 sm:py-1 sm:px-2 md:py-2 md:px-4 lg:py-3 lg:px-6 xl:py-4 xl:px-8">
           Next
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

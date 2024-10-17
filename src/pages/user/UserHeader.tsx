@@ -4,7 +4,7 @@ import {
   AiOutlineMenu,
 } from "react-icons/ai";
 import { useSelector } from "react-redux";
-
+import bm from "../../assets/bmlogo.jpg";
 const UserHeader = () => {
   const user = useSelector((state: any) => state?.myUser);
 
@@ -52,7 +52,7 @@ const UserHeader = () => {
             <div className="w-[30px] h-[30px] rounded-[50%] ">
               <img
                 className="w-[100%] h-[100%] rounded-[50%]  hover:cursor-pointer hover:scale-[1.05] transition-all duration-700  "
-                src={user?.image}
+                src={bm}
                 alt="pinimg"
               />
             </div>

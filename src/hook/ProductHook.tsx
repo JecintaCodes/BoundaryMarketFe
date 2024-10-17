@@ -18,7 +18,7 @@ export const useProduct = (userID: string, storeID: string) => {
   return { data, userID, storeID };
 };
 
-export const useProductOrder = (userID: string) => {
+export const useOneUserProductOrder = (userID: string) => {
   const { data: oneUserOrder } = useSWR(
     `/${userID}/get-one-product`,
     ViewProductOrder,
@@ -46,15 +46,15 @@ export const allProductsHooks = () => {
   );
   return { allProduct, isLoading };
 };
-export const oneUserProductHook = () => {
-  const _id = useSelector((state: any) => state?.user);
+export const oneUserProductHook = (_id) => {
+  // const _id = useSelector((state: any) => state?.user);
   const { data, isLoading } = useSWR(
     `${_id}/view-user-products`,
     () => readOneUserProduct(_id!),
     { refreshInterval: 5000 }
   );
   console.log(_id);
-  return { data, isLoading };
+  return { data, isLoading, _id };
 };
 
 export const oneUserListHook = () => {

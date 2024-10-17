@@ -6,14 +6,8 @@ import {
   AiOutlineCalendar,
   AiOutlineDatabase,
   AiOutlineProfile,
-  AiOutlineHistory,
 } from "react-icons/ai";
-import {
-  CgLogOut,
-  CgProfile,
-  CgShoppingBag,
-  CgProductHunt,
-} from "react-icons/cg";
+import { CgLogOut, CgProfile, CgProductHunt } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOutUser } from "../../components/global/redux";
@@ -36,9 +30,9 @@ const MobileSliderAdmin = () => {
         <Link to="/admin/database">
           <AiOutlineDatabase className="my-3" />
         </Link>
-        <Link to="/admin/shop">
+        {/* <Link to="/admin/shop">
           <CgShoppingBag className="my-3" />
-        </Link>
+        </Link> */}
         <Link to="/product">
           <CgProductHunt className="my-3" />
         </Link>
@@ -46,9 +40,9 @@ const MobileSliderAdmin = () => {
         <Link to="/admin/orders">
           <GiFullWoodBucketHandle className="my-3" />
         </Link>
-        <Link to="/admin/histroys">
+        {/* <Link to="/admin/histroys">
           <AiOutlineHistory className="my-3" />
-        </Link>
+        </Link> */}
         <Link to={`/${adminID}/user-sign-up`}>
           <CgProfile className="my-3" />
         </Link>

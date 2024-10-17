@@ -6,7 +6,9 @@ import MobileSliderUser from "./MobileUserSLider";
 const UserLayout = () => {
   return (
     <div className="w-[100%]  relative ">
-      <UserHeader />
+      <div>
+        <UserHeader />
+      </div>{" "}
       <div className="flex  justify-between ">
         <div className="w-[17%] fixed left-0 z-50 ">
           <UserSlider />

@@ -4,8 +4,9 @@ import {
   AiOutlineMenu,
 } from "react-icons/ai";
 import { useSelector } from "react-redux";
+import bm from "../../assets/bmlogo.jpg";
 const BuyerHeader = () => {
-  const data = useSelector((state: any) => state?.myBuyer);
+  const data = useSelector((state: any) => state?.user);
   return (
     <div className="w-[100%] h-[70px] flex justify-center  ">
       <div className="w-[90%] flex justify-between items-center small:w-[95%] mobile:w-[95%] mobilel:w-[95%] mobilel:justify-between ">
@@ -35,8 +36,8 @@ const BuyerHeader = () => {
             <div className="w-[30px] h-[30px] rounded-[50%] ">
               <img
                 className="w-[100%] h-[100%] rounded-[50%]  hover:cursor-pointer hover:scale-[1.05] transition-all duration-700   "
-                src={data?.image}
-                alt="pinimg"
+                src={bm}
+                alt={bm}
               />
             </div>
             <div className="text-[12px] font-bold hover:cursor-pointer small:text-[10px] mobile:text-[10px] mobilel:text-[10px]  ">

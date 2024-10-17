@@ -12,8 +12,8 @@ const VerifyPayment = () => {
 
   const VerifyPaymentApiCall = async () => {
     axios
-      .post("https://boundarymarket.onrender.com/api/v1/verify-payment", {
-        // .post("http://localhost:2003/api/v1/verify-payment", {
+      // .post("https://boundarymarket.onrender.com/api/v1/verify-payment", {
+      .post("http://localhost:2003/api/v1/verify-payment", {
         refNumb: refID,
         email: user?.email,
       })
@@ -31,6 +31,7 @@ const VerifyPayment = () => {
       .catch((error) => {
         console.error(error);
       });
+    // console.log(res.data.data.data.gateway_response);
   };
 
   useEffect(() => {
