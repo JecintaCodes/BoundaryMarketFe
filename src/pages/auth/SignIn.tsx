@@ -48,13 +48,42 @@ const SignIn = () => {
       const res = await signInUser({ email, password });
       dispatch(logInUser(res));
       reset();
-      navigate("/product");
+
+      // Redirect logic based on user role
+      switch (res.role) {
+        case "admin":
+          navigate("/admin");
+          break;
+        case "buyer":
+          navigate("/product");
+          break;
+        case "user":
+          navigate("/user");
+          break;
+        default:
+          console.error("Invalid role");
+      }
     } catch (error) {
       console.error(error); // Handle error
     } finally {
       setLoading(false);
     }
   });
+  // const onHandleSubmission = handleSubmit(async (data: any) => {
+  //   try {
+  //     setLoading(true);
+  //     const { email, password } = data;
+  //     console.log("handle submit", { email, password });
+  //     const res = await signInUser({ email, password });
+  //     dispatch(logInUser(res));
+  //     reset();
+  //     navigate("/product");
+  //   } catch (error) {
+  //     console.error(error); // Handle error
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // });
   return (
     <form
       onSubmit={onHandleSubmission}
