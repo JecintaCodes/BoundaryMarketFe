@@ -90,9 +90,9 @@ const AddList = () => {
     <div className="w-[100%] h-[100vh] flex justify-center ">
       <div className="w-[90%] mt-[20px] ">
         {/*big list */}
-        <div>
+        <div className=" flex justify-center ">
           {/* up */}
-          <div className=" w-[50%] h-[50px] flex items-center  small:w-[100%] mobile:w-[100%] mobilel:w-[100%] border justify-between p-2 text-[13px] font-bold rounded ">
+          <div className=" w-[70%] h-[50px] flex items-center  small:w-[100%] mobile:w-[100%] mobilel:w-[100%] border justify-between p-2 text-[13px] font-bold rounded ">
             <div>Items</div>
             <div className="">Amount</div>
           </div>
