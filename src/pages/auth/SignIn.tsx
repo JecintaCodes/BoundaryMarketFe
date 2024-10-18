@@ -51,13 +51,13 @@ const SignIn = () => {
 
       // Redirect logic based on user role
       switch (res.role) {
-        case "admin":
+        case "ADMIN":
           navigate("/admin");
           break;
-        case "buyer":
+        case "BUYER":
           navigate("/product");
           break;
-        case "user":
+        case "USER":
           navigate("/user");
           break;
         default:

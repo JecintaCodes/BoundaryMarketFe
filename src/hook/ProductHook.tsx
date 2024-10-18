@@ -46,15 +46,15 @@ export const allProductsHooks = () => {
   );
   return { allProduct, isLoading };
 };
-export const oneUserProductHook = (_id) => {
-  // const _id = useSelector((state: any) => state?.user);
+export const oneUserProductHook = (userID) => {
+  // const userID = useSelector((state: any) => state?.user);
   const { data, isLoading } = useSWR(
-    `${_id}/view-user-products`,
-    () => readOneUserProduct(_id!),
+    `${userID}/view-user-products`,
+    () => readOneUserProduct(userID!),
     { refreshInterval: 5000 }
   );
-  console.log(_id);
-  return { data, isLoading, _id };
+  console.log(userID);
+  return { data, isLoading, userID };
 };
 
 export const oneUserListHook = () => {

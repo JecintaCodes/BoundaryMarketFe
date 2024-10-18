@@ -5,10 +5,10 @@ import { CiBag1 } from "react-icons/ci";
 import { MdPerson } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { allUserHook } from "../../hook/UserHook";
-import OrderChat from "../chart/OrderChart";
+// import { allUserHook } from "../../hook/UserHook";
+// import OrderChat from "../chart/OrderChart";
 
-const AdminDash = () => {
+const AdminDashboard = () => {
   const user = useSelector((state: any) => state?.user);
   // const [allUser] = allUserHook()
   return (
@@ -20,7 +20,7 @@ const AdminDash = () => {
             Dashboard{" "}
           </div>
           {/* card */}
-          <div className="w-[100%] mt-[40px] flex gap-[30px] small:gap-[20px] mobile:gap-[35px] small:flex-wrap flex-wrap  ">
+          <div className="w-[100%] mt-[40px] flex gap-[30px] small:gap-[20px] mobile:gap-[35px] flex-wrap  ">
             {/* first */}
 
             <div className="w-[15%] h-[100px] flex justify-center flex-col items-center bg-[#f9f0f0] rounded hover:cursor-pointer hover:duration-700 hover:transition-all hover:scale-[1.05] small:w-[80px]  mobile:w-[80px] mobilel:w-[100px]   ">
@@ -179,19 +179,19 @@ const AdminDash = () => {
   );
 };
 
-const AdminDashboard = () => {
-  return (
-    <div className="w-[100%] flex justify-center h-[100%">
-      <div className="w-[90%]">
-        <div>
-          <AdminDash />
-        </div>
-        {/* <div className="mt-[20px]">
-          <OrderChat />
-        </div> */}
-      </div>
-    </div>
-  );
-};
+// const AdminDashboard = () => {
+//   return (
+//     <div className="w-[100%] flex justify-center h-[100%">
+//       <div className="w-[90%]">
+//         <div className="flex flex-[wrap] bg-black">
+//           <AdminDash />
+//         </div>
+//         {/* <div className="mt-[20px]">
+//           <OrderChat />
+//         </div> */}
+//       </div>
+//     </div>
+//   );
+// };
 
 export default AdminDashboard;

@@ -14,7 +14,7 @@ import { logOutUser } from "../../components/global/redux";
 
 const MobileSliderAdmin = () => {
   const dispach = useDispatch();
-  const adminID = useSelector((state: any) => state?.myAdmin);
+  // const adminID = useSelector((state: any) => state?.myAdmin);
   return (
     <div className="fixed left-0 ">
       <div className="w-[12vw] small:text-[15px] mobile:text-[15px] mobilel:text-[15px] h-[100vh] bg-black text-white flex items-center flex-col hover:cursor-pointer text-[20px] py-2">
@@ -43,7 +43,7 @@ const MobileSliderAdmin = () => {
         {/* <Link to="/admin/histroys">
           <AiOutlineHistory className="my-3" />
         </Link> */}
-        <Link to={`/${adminID}/user-sign-up`}>
+        <Link to={`/user-sign-up`}>
           <CgProfile className="my-3" />
         </Link>
         <CiSettings className="my-3" />

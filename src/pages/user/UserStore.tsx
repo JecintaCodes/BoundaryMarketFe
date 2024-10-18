@@ -4,8 +4,8 @@ import { oneUserProductHook } from "../../hook/ProductHook";
 import LoaderScreen from "../loading/LoaderScreen";
 
 const UserStore = () => {
-  const _id = useSelector((state: any) => state?.user);
-  const { isLoading, data } = oneUserProductHook(_id);
+  const userID = useSelector((state: any) => state?.user);
+  const { isLoading, data } = oneUserProductHook(userID);
 
   return (
     <div>
@@ -18,7 +18,9 @@ const UserStore = () => {
       ) : (
         <div className="w-[100%] h-[100%] flex justify-center ">
           <div className="w-[90%] small:w-[90%] mobile:w-[90%]   ">
-            <div className="mt-[20px]">welcome {_id?.name}</div>
+            <div className="mt-[20px]">
+              welcome {userID?.name} to your store
+            </div>
             <div className="flex items-center gap-[35px] mobile:gap-[40px] small:w-[100%] small:gap-[] flex-wrap   ">
               {/* card */}
               {data &&
