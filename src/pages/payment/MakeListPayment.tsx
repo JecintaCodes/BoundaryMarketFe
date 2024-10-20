@@ -5,41 +5,56 @@ import { emptyList, removeFromList } from "../../components/global/redux";
 import { AiFillDelete } from "react-icons/ai";
 import axios from "axios";
 
-const ListCheckout = () => {
+interface List {
+  _id: string;
+  title: string;
+  amount: number;
+}
+
+interface User {
+  email: string;
+}
+
+const MakeListCheckout = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
-  const lists = useSelector((state: any) => state?.list);
-  console.log(lists);
-  const user = useSelector((state: any) => state?.user);
+  const lists: List[] = useSelector((state: any) => state?.list);
+  const user: User = useSelector((state: any) => state?.user);
+
   const calculateTotalAmount = () => {
     return lists
       ?.map((item) => item.amount)
       ?.reduce((acc, amount) => acc + amount, 0);
   };
 
-  console.log("reading lists screen.....");
+  const handleEmptyList = () => {
+    for (let i of lists) {
+      dispatch(emptyList());
+    }
+  };
+
   const makePaymentApiCall = async () => {
-    setLoading(true);
     try {
+      setLoading(true);
       const totalAmount = calculateTotalAmount();
       const response = await axios.post(
-        `https://boundarymarket.onrender.com/api/v1/make-payment`,
-        // {
-
-        // post (
-        // `http://localhost:2003/api/v1/make-payment`,
+        `http://localhost:2003/api/v1/make-payment`,
         {
-          email: user?.email,
+          email: user.email,
           amount: totalAmount.toString(),
         }
       );
-      console.log(response);
       window.location.replace(response.data.data.authorization_url);
     } catch (error) {
       console.error(error);
     } finally {
       setLoading(false);
     }
+  };
+
+  const makeListPayment = async () => {
+    handleEmptyList();
+    await makePaymentApiCall();
   };
 
   return (
@@ -99,14 +114,7 @@ const ListCheckout = () => {
 
               <button
                 className="bg-orange-500 mt-3 w-[100%] hover:bg-orange-700 text-white font-bold py-2 px-4 rounded md:py-4 md:px-6 lg:py-6 lg:px-8 xl:py-8 xl:px-10 2xl:py-10 2xl:px-10"
-                // onClick={makePaymentApiCall}
-                onClick={() => {
-                  for (let i of lists) {
-                    // updateStockProduct(i._id, i.QTY);
-                    dispatch(emptyList());
-                  }
-                  makePaymentApiCall();
-                }}
+                onClick={makeListPayment}
               >
                 {loading ? (
                   <div className="flex justify-center items-center">
@@ -124,4 +132,4 @@ const ListCheckout = () => {
   );
 };
 
-export default ListCheckout;
+export default MakeListCheckout;

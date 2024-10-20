@@ -30,88 +30,78 @@ const AddProduct = () => {
   };
 
   return (
-    <div
-      className="fixed top-0 left-0 bg-white h-[100%] w-full justify-center items-center flex z-[2] "
-      style={{
-        background: " rgba( 255, 255, 255, 0.15 )",
-        boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-        backdropFilter: " blur( 7px )",
-        borderRadius: "10px",
-        border: "1px solid rgba( 255, 255, 255, 0.18 )",
-      }}
-    >
-      {/* <div className="w-full h-full absolute top-0 left-0 hover:cursor-pointer " /> */}
-      <div className="flex justify-center border small:border-none small:ml-2 small:p-2 p-5 small:mr-2 rounded-md absolute z-[3]  ">
-        <div className=" ml-4">
-          <label
-            htmlFor="image"
-            className="flex items-center h-[50px] justify-center text-white bg-[#456104] hover:cursor-pointer duration-300 transition-all hover:scale-[1.02] rounded-sm mb-4 "
-            onClick={() => {
-              // setToggle(false);
-            }}
-          >
-            upload images
-          </label>
-          <input
-            id="image"
-            className="hidden"
-            onChange={onhandleImageUpload}
-            type="file"
-            accept=".jpg,.png,.jpeg"
-            multiple
+    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-11/12 md:w-9/12 lg:w-7/12 xl:w-5/12 2xl:w-4/12 p-5 md:p-10 lg:p-20 rounded-md shadow-md z-[2]">
+      <button className="absolute top-4 right-4 text-lg text-gray-500 hover:text-gray-900">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
           />
-
-          <div className="flex flex-col mt-3 ">
-            <input
-              placeholder="title"
-              className="border rounded-md w-[300px] h-[50px] my-2 pl-2 outline-none text-[15px] "
-              value={title}
-              type="text"
-              onChange={(e: any) => setTitle(e.target.value)}
-            />
-            <input
-              placeholder="amount"
-              className="border rounded-md w-[300px] h-[50px] my-2 pl-2 outline-none text-[15px] "
-              value={amount}
-              type="number"
-              onChange={(e: any) => setAmount(e.target.value)}
-            />
-            <input
-              placeholder="quantity"
-              className="border rounded-md w-[300px] h-[50px] my-2 pl-2 outline-none text-[15px] "
-              value={QTYinStock}
-              type="number"
-              onChange={(e: any) => setQTYinStock(e.target.value)}
-            />
-            <input
-              placeholder="description"
-              className="border rounded-md w-[300px] h-[50px] my-2 pl-2 outline-none text-[15px] "
-              value={description}
-              type="text"
-              onChange={(e: any) => setDescription(e.target.value)}
-            />
-
-            <div
-              className="flex items-center h-[50px] justify-center small:text-[12px] mobile:text-[12px] text-white bg-[#fa9608] hover:cursor-pointer duration-300 transition-all hover:scale-[1.02] rounded-sm small:h-[35px] mobile:h-[35px]  "
-              onClick={() => {
-                // setLoading(true);
-                createProduct(formData, userID._id).then((res) => {
-                  console.log(res);
-                });
-                // setLoading(false);
-                // console.log("clicked");
-              }}
-            >
-              {loading ? (
-                <div>
-                  <FaSpinner />
-                </div>
-              ) : (
-                <div>Add Product</div>
-              )}
-            </div>
-          </div>
-        </div>
+        </svg>
+      </button>
+      <h2 className="text-lg md:text-xl lg:text-2xl font-bold mb-4">
+        Add Product
+      </h2>
+      <div className="flex flex-col">
+        <input
+          type="file"
+          accept=".jpg,.png,.jpeg"
+          onChange={onhandleImageUpload}
+          className="hidden"
+          id="image"
+        />
+        <label
+          htmlFor="image"
+          className="bg-[#456104] text-white p-2 rounded-sm cursor-pointer mb-4"
+        >
+          Upload Image
+        </label>
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="border rounded-md p-2 mb-4 w-full"
+        />
+        <input
+          type="number"
+          placeholder="Amount"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          className="border rounded-md p-2 mb-4 w-full"
+        />
+        <input
+          type="number"
+          placeholder="Quantity"
+          value={QTYinStock}
+          onChange={(e) => setQTYinStock(e.target.value)}
+          className="border rounded-md p-2 mb-4 w-full"
+        />
+        <input
+          type="text"
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="border rounded-md p-2 mb-4 w-full"
+        />
+        <button
+          className="bg-[#fa9608] text-white p-2 rounded-sm cursor-pointer"
+          onClick={() => {
+            createProduct(formData, userID._id).then((res) => {
+              console.log(res);
+            });
+          }}
+        >
+          {loading ? <FaSpinner /> : "Add Product"}
+        </button>
       </div>
     </div>
   );

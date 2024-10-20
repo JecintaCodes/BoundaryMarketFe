@@ -40,7 +40,7 @@ const UserRegistration = () => {
     console.log("handle submit", data);
     if (adminID.role === "ADMIN") {
       createUser(data, adminID?._id).then(() => {
-        navigate("/user-sign-in");
+        navigate("/sign-in");
       });
     } else {
       console.log("error admin");
@@ -131,7 +131,7 @@ const UserRegistration = () => {
         </button>
         <div className="w-[100%] h-[50px] mt-[20px] flex justify-center gap-2 text-[12px] ">
           <div>Already have an account?</div>
-          <Link to="/user-sign-in">
+          <Link to="/sign-in">
             <div>Sign in</div>
           </Link>
         </div>

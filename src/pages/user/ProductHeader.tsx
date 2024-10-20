@@ -9,7 +9,7 @@ import { useState } from "react";
 // import { useState } from "react";
 
 const ProductHeader = () => {
-  // const toggle = useSelector((state: any) => state?.myBuyer);
+  const role = useSelector((state: any) => state?.user?.role);
   const cart = useSelector((state: any) => state.cart);
   const [toggleMenu, setToggleMenu] = useState(false);
   // const [toggles, setToggle] = useState<boolean>(false);
@@ -20,6 +20,18 @@ const ProductHeader = () => {
   //   setToggle(dispatch(toggle(true)));
   // };
   // console.log(toggle);
+  const getRedirectUrl = () => {
+    switch (role) {
+      case "ADMIN":
+        return "/admin";
+      case "USER":
+        return "/user";
+      case "BUYER":
+        return "/buyer";
+      default:
+        return "/sign-in"; // or any other default page
+    }
+  };
   return (
     <div className="w-full h-[90px] bg-[#456104] flex justify-center">
       <div className="w-[90%] flex justify-between items-center">
@@ -102,12 +114,20 @@ const ProductHeader = () => {
           {/* firstCom */}
           <div className=" flex justify-center gap-1 items-center text-[white] border-[#fd8605] h-[50px] p-1 text-[13px] border-[1px] ">
             <VscAccount className="cursor-pointer" fontSize={20} />
-            <Link to={`/buyer`}>
+            <Link to={getRedirectUrl()}>
               <p className="hover:cursor-pointer hover:text-[#fd8605] font-bold text-[14px] ">
                 Account
               </p>
             </Link>
-            <Link to={`/buyer`}>
+            <Link
+              to={
+                role === "admin"
+                  ? "/admin"
+                  : role === "user"
+                  ? "/user"
+                  : "/buyer"
+              }
+            >
               <MdOutlineKeyboardArrowDown
                 className="hover:cursor-pointer"
                 fontSize={20}

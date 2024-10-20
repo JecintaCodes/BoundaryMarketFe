@@ -41,6 +41,7 @@ export const readOneUserProduct = async (userID: string) => {
     .then((res: any) => {
       return res.data.data;
     });
+  // console.log(userID);
 };
 export const ViewProductOrder = async (userID: string) => {
   return await axios.get(`${URL}/${userID}/view-orders`).then((res: any) => {

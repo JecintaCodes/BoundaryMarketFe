@@ -64,7 +64,7 @@ const AdminRegistration = () => {
       confirmPassword,
       telNumb,
     }).then(() => {
-      navigate("/admin-sign-in");
+      navigate("/sign-in");
     });
     setLoading(false);
   });
@@ -164,7 +164,7 @@ const AdminRegistration = () => {
         </button>
         <div className="w-[100%] h-[50px] mt-[20px] flex justify-center gap-2 text-[12px] ">
           <div>Already have an account?</div>
-          <Link to="/admin-sign-in">
+          <Link to="/sign-in">
             <div>Sign in</div>
           </Link>
         </div>

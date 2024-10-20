@@ -90,19 +90,19 @@ const AddList = () => {
     <div className="w-[100%] h-[100vh] flex justify-center ">
       <div className="w-[90%] mt-[20px] ">
         {/*big list */}
-        <div className=" flex justify-center ">
+        <div className=" w-[100%] flex justify-center flex-col ">
           {/* up */}
-          <div className=" w-[70%] h-[50px] flex items-center  small:w-[100%] mobile:w-[100%] mobilel:w-[100%] border justify-between p-2 text-[13px] font-bold rounded ">
+          <div className=" w-[100%] h-[80px]  flex items-center  small:w-[100%] mobile:w-[100%] mobilel:w-[100%] border justify-between p-2 text-[13px] font-bold rounded ">
             <div>Items</div>
             <div className="">Amount</div>
           </div>
           {/* up */}
           {/* lists */}
-          <div className="w-[50%] small:w-[100%] mobile:w-[100%] mobilel:w-[100%] ">
+          <div className="w-[100%] small:w-[100%] mobile:w-[100%] mobilel:w-[100%]  ">
             {listItems.map((item: ListItems, index: number) => (
               <div
                 key={index}
-                className="w-[100%] h-[40px] rounded border flex items-center text-[12px] font-semibold mt-[25px] mb-2 "
+                className="w-[100%] mobile:h-[50px] small:h-[50px] mobilel:h-[50px] h-[70px] rounded border flex items-center text-[12px] font-semibold mt-[25px] mb-2 "
               >
                 {/* left */}
                 <div className="w-[70%] h-[100%] border-r-[1px]  border-r-[silver]  ">

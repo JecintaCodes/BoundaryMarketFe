@@ -56,23 +56,48 @@ export const allProductsHooks = () => {
 //   console.log(userID);
 //   return { oneProduct, isLoading, userID };
 // };
-export const oneUserProductHook = () => {
-  const userID = useSelector((state: any) => state?.user);
-  const {
-    data: oneProduct,
-    isLoading,
-    error,
-  } = useSWR(
-    userID ? `${userID}/view-user-products` : null,
-    () => readOneUserProduct(userID),
-    { refreshInterval: 5000 }
+
+const fetchUserProducts = (userID: string) => {
+  return fetch(`http://localhost:2003/api/v1/${userID}/view-user-products`)
+    .then((res) => res.json())
+    .then((data) => data)
+    .catch((error) => console.error("API Error:", error));
+};
+
+export const oneUserProductHook = (userID: any) => {
+  if (!userID) {
+    return { oneProduct: null, isLoading: false, userID: null, error: null };
+  }
+
+  const { data, isLoading, error } = useSWR(
+    userID ? `http://localhost:2003/api/v1/${userID}/view-user-products` : null,
+    () => fetchUserProducts(userID)
   );
 
-  console.log(userID);
-  console.error(error); // Log any errors
+  if (error) {
+    console.error("Error fetching data:", error);
+    return { oneProduct: null, isLoading, userID, error };
+  }
 
-  return { oneProduct, isLoading, userID, error };
+  if (!data || !data.data || !data.data.myStore) {
+    console.log("No data available");
+    return { oneProduct: null, isLoading, userID, error };
+  }
+
+  return { oneProduct: data.data.myStore, isLoading, userID, error };
 };
+// export const oneUserProductHook = (userID: any) => {
+//   if (!userID) {
+//     return { oneProduct: null, isLoading: false, userID: null, error: null };
+//   }
+
+//   const { data, isLoading, error } = useSWR(
+//     userID ? `/api/user/${userID}` : null,
+//     () => fetchUserProducts(userID)
+//   );
+
+//   return { oneProduct: data?.data?.myStore, isLoading, userID, error };
+// };
 export const oneUserListHook = () => {
   const userID = useSelector((state: any) => state?.user);
   const {
